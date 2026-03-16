@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Water Footprint</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&display=swap');
 
         * {
             margin: 0;
@@ -14,25 +14,26 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Cormorant Garamond', serif;
+            background: #0a1628;
             min-height: 100vh;
-            padding: 20px;
+            padding: 40px 20px;
+            color: #0a1628;
         }
 
         .container {
-            max-width: 800px;
+            max-width: 700px;
             margin: 0 auto;
             background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            border-radius: 30px;
+            box-shadow: 0 30px 90px rgba(0,0,0,0.5);
             overflow: hidden;
         }
 
         .tabs {
             display: flex;
             background: #f8f9fa;
-            border-bottom: 1px solid #e9ecef;
+            border-bottom: 1px solid #e0e0e0;
         }
 
         .tab-button {
@@ -41,27 +42,28 @@
             background: none;
             border: none;
             font-size: 1.1em;
-            font-weight: 500;
-            color: #6c757d;
+            font-weight: 400;
+            font-family: 'Cormorant Garamond', serif;
+            letter-spacing: 0.5px;
+            color: #0a1628;
             cursor: pointer;
             transition: all 0.3s ease;
-            border-bottom: 3px solid transparent;
+            border-bottom: 2px solid transparent;
         }
 
         .tab-button.active {
-            color: #495057;
-            border-bottom-color: #007bff;
+            color: #0a1628;
+            border-bottom-color: #0a1628;
             background: white;
         }
 
         .tab-button:hover {
-            color: #495057;
-            background: #e9ecef;
+            background: #e8f4f8;
         }
 
         .tab-content {
             display: none;
-            padding: 40px;
+            padding: 50px 40px;
         }
 
         .tab-content.active {
@@ -69,11 +71,12 @@
         }
 
         h1 {
-            color: #2c3e50;
+            color: #0a1628;
             text-align: center;
-            margin-bottom: 30px;
-            font-size: 2.5em;
+            margin-bottom: 40px;
+            font-size: 2.8em;
             font-weight: 300;
+            letter-spacing: 2px;
         }
 
         .game-container {
@@ -83,81 +86,89 @@
 
         .source-selector {
             background: #f8f9fa;
-            padding: 20px;
-            border-radius: 12px;
-            margin-bottom: 30px;
-            border: 1px solid #e9ecef;
+            padding: 30px;
+            border-radius: 20px;
+            margin-bottom: 40px;
+            border: 1px solid #e0e0e0;
         }
 
         .source-selector label {
             display: block;
-            font-size: 1em;
-            color: #495057;
-            margin-bottom: 10px;
-            font-weight: 500;
+            font-size: 1.1em;
+            color: #0a1628;
+            margin-bottom: 15px;
+            font-weight: 400;
+            letter-spacing: 0.5px;
         }
 
         select {
             width: 100%;
-            padding: 12px 15px;
+            padding: 15px 20px;
             font-size: 1em;
-            font-family: 'Inter', sans-serif;
-            border: 2px solid #dee2e6;
-            border-radius: 8px;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+            border: 2px solid #d0e8f0;
+            border-radius: 15px;
             background: white;
             cursor: pointer;
             outline: none;
             transition: all 0.3s ease;
+            letter-spacing: 0.5px;
         }
 
         select:focus {
-            border-color: #007bff;
-            box-shadow: 0 0 0 3px rgba(0,123,255,0.1);
+            border-color: #0a1628;
+            box-shadow: 0 0 0 3px rgba(10, 22, 40, 0.1);
         }
 
         .source-info {
             font-size: 0.9em;
-            color: #6c757d;
-            margin-top: 10px;
-            line-height: 1.4;
+            color: #666;
+            margin-top: 15px;
+            line-height: 1.5;
+            letter-spacing: 0.3px;
         }
 
         .item-display {
-            background: #e3f2fd;
-            padding: 30px;
-            border-radius: 15px;
-            margin-bottom: 30px;
+            background: #e8f4f8;
+            padding: 40px;
+            border-radius: 25px;
+            margin-bottom: 40px;
             text-align: center;
-            border: 1px solid #bbdefb;
+            border: 1px solid #d0e8f0;
         }
 
         .item-name {
             font-size: 1.8em;
-            color: #1976d2;
-            font-weight: 500;
-            margin-bottom: 10px;
+            color: #0a1628;
+            font-weight: 400;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
         }
 
         .water-amount {
-            font-size: 2em;
-            color: #0d47a1;
-            font-weight: 600;
-            margin-bottom: 10px;
+            font-size: 2.2em;
+            color: #0a1628;
+            font-weight: 300;
+            margin-bottom: 12px;
+            letter-spacing: 0.5px;
         }
 
         .item-source {
             font-size: 0.9em;
-            color: #546e7a;
+            color: #666;
+            letter-spacing: 0.3px;
         }
 
         .item-source a {
-            color: #1976d2;
+            color: #0a1628;
             text-decoration: none;
             font-weight: 500;
+            border-bottom: 1px solid #0a1628;
         }
 
         .item-source a:hover {
-            text-decoration: underline;
+            border-bottom-color: transparent;
         }
 
         .question {
