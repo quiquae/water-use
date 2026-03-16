@@ -508,34 +508,36 @@
             display: none;
             margin: 30px 0;
             position: relative;
-            height: 80px;
-            padding: 0 10px;
+            height: 90px;
+            padding: 0 20px;
         }
 
         .scale-line {
             position: absolute;
-            top: 30px;
+            top: 40px;
             left: 0;
             right: 0;
-            height: 2px;
-            background: #dee2e6;
+            height: 3px;
+            background: #d0e8f0;
+            border-radius: 2px;
         }
 
         .scale-marker {
             position: absolute;
-            width: 4px;
-            height: 20px;
-            background: #007bff;
-            top: 25px;
+            width: 6px;
+            height: 24px;
+            top: 32px;
             transform: translateX(-50%);
+            border-radius: 3px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
 
         .scale-marker.guess {
-            background: #28a745;
+            background: #2c3e50;
         }
 
         .scale-marker.actual {
-            background: #dc3545;
+            background: #34495e;
         }
 
         .scale-label {
@@ -1433,23 +1435,66 @@
                 document.getElementById('actualBar').style.width = actualWidth + '%';
                 document.getElementById('actualBarValue').textContent = formatUnits(actualRatio);
             } else if (currentVisualization === 'scale') {
-                const totalRange = Math.max(guess, actualRatio) * 1.2;
-                const guessPosition = (guess / totalRange) * 100;
-                const actualPosition = (actualRatio / totalRange) * 100;
+                // Calculate range that includes both values with proper scaling
+                const values = [guess, actualRatio].filter(v => v > 0);
+                const minValue = Math.min(...values);
+                const maxValue = Math.max(...values);
+                
+                // Use logarithmic scaling for very different values
+                let scaleMin, scaleMax;
+                if (maxValue / minValue > 100) {
+                    // Large difference - use log scale
+                    const logMin = Math.log10(Math.max(0.001, minValue));
+                    const logMax = Math.log10(maxValue);
+                    const logRange = logMax - logMin;
+                    const padding = logRange * 0.1;
+                    scaleMin = Math.pow(10, logMin - padding);
+                    scaleMax = Math.pow(10, logMax + padding);
+                } else {
+                    // Normal scale with padding
+                    const range = maxValue - minValue;
+                    const padding = Math.max(range * 0.2, maxValue * 0.1);
+                    scaleMin = Math.max(0, minValue - padding);
+                    scaleMax = maxValue + padding;
+                }
+                
+                const scaleRange = scaleMax - scaleMin;
+                
+                // Position markers and labels
+                const guessPosition = scaleRange > 0 ? ((guess - scaleMin) / scaleRange) * 100 : 50;
+                const actualPosition = scaleRange > 0 ? ((actualRatio - scaleMin) / scaleRange) * 100 : 50;
 
                 document.getElementById('guessMarker').style.left = guessPosition + '%';
                 document.getElementById('actualMarker').style.left = actualPosition + '%';
                 
-                // Position labels with overlap prevention
-                const minLabelDistance = 15; // Minimum distance between labels in percentage
+                // Position labels with overlap prevention and edge handling
+                const minLabelDistance = 18; // Minimum distance between labels in percentage
+                const labelOffset = minLabelDistance / 2;
                 let guessLabelPos = guessPosition;
                 let actualLabelPos = actualPosition;
                 
                 if (Math.abs(guessPosition - actualPosition) < minLabelDistance) {
                     // Labels are too close, offset them
                     const midpoint = (guessPosition + actualPosition) / 2;
-                    guessLabelPos = Math.max(5, midpoint - minLabelDistance / 2);
-                    actualLabelPos = Math.min(95, midpoint + minLabelDistance / 2);
+                    
+                    // Ensure labels don't go off-screen
+                    if (midpoint < labelOffset + 5) {
+                        // Both near left edge
+                        guessLabelPos = Math.max(5, guessPosition);
+                        actualLabelPos = Math.min(95, actualPosition + minLabelDistance);
+                    } else if (midpoint > 100 - labelOffset - 5) {
+                        // Both near right edge
+                        guessLabelPos = Math.max(5, guessPosition - minLabelDistance);
+                        actualLabelPos = Math.min(95, actualPosition);
+                    } else {
+                        // Normal case
+                        guessLabelPos = Math.max(5, Math.min(95, midpoint - labelOffset));
+                        actualLabelPos = Math.max(5, Math.min(95, midpoint + labelOffset));
+                    }
+                } else {
+                    // Ensure individual labels don't go off-screen
+                    guessLabelPos = Math.max(5, Math.min(95, guessPosition));
+                    actualLabelPos = Math.max(5, Math.min(95, actualPosition));
                 }
                 
                 document.getElementById('guessScaleLabel').style.left = guessLabelPos + '%';
@@ -1494,7 +1539,7 @@
 
         // Initialize on page load
         loadData();
-        
+
         // Force scroll to top on page load
         window.addEventListener('load', function() {
             window.scrollTo(0, 0);
