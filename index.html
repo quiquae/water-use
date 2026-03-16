@@ -19,15 +19,57 @@
             min-height: 100vh;
             padding: 40px 20px;
             color: #0a1628;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        /* Water backdrop */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(ellipse at 20% 30%, rgba(100, 181, 246, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 70%, rgba(129, 212, 250, 0.12) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(79, 195, 247, 0.08) 0%, transparent 50%);
+            z-index: 0;
+            animation: waterShift 20s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes waterShift {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+            }
+            33% {
+                transform: translate(-20px, 30px) scale(1.05);
+            }
+            66% {
+                transform: translate(20px, -20px) scale(0.95);
+            }
         }
 
         .container {
-            max-width: 700px;
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            width: 100%;
             margin: 0 auto;
             background: white;
             border-radius: 30px;
             box-shadow: 0 30px 90px rgba(0,0,0,0.5);
-            overflow: hidden;
+            overflow: visible;
+            min-height: 80vh;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 50px 40px;
+            min-height: 60vh;
         }
 
         .tabs {
@@ -90,6 +132,35 @@
             border-radius: 20px;
             margin-bottom: 40px;
             border: 1px solid #e0e0e0;
+            position: relative; /* ADD THIS */
+            overflow: hidden; /* ADD THIS */
+        }
+
+        .source-selector::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 200%;
+            height: 4px;
+            background: linear-gradient(
+                90deg,
+                #d0e8f0 0%,
+                #64b5f6 25%,
+                #d0e8f0 50%,
+                #64b5f6 75%,
+                #d0e8f0 100%
+            );
+            animation: waveSlide 3s linear infinite;
+        }
+
+        @keyframes waveSlide {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
         }
 
         .source-selector label {
@@ -136,6 +207,17 @@
             margin-bottom: 40px;
             text-align: center;
             border: 1px solid #d0e8f0;
+            position: relative; /* ADD THIS */
+            animation: gentlePulse 4s ease-in-out infinite; /* ADD THIS */
+        }
+
+        @keyframes gentlePulse {
+            0%, 100% {
+                box-shadow: 0 0 20px rgba(100, 181, 246, 0.1);
+            }
+            50% {
+                box-shadow: 0 0 30px rgba(100, 181, 246, 0.2);
+            }
         }
 
         .item-name {
@@ -172,12 +254,14 @@
         }
 
         .question {
-            font-size: 1.4em;
-            color: #37474f;
-            margin-bottom: 25px;
+            font-size: 1.6em;
+            color: #0a1628;
+            margin-bottom: 30px;
             text-align: center;
-            font-weight: 400;
+            font-weight: 300;
             line-height: 1.4;
+            font-family: 'Cormorant Garamond', serif;
+            letter-spacing: 0.5px;
         }
 
         .input-group {
@@ -190,35 +274,61 @@
             flex: 1;
             padding: 15px 18px;
             font-size: 1.1em;
-            font-family: 'Inter', sans-serif;
-            border: 2px solid #dee2e6;
-            border-radius: 10px;
+            font-family: 'Cormorant Garamond', serif;
+            border: 1px solid #d0e8f0;
+            border-radius: 15px;
             outline: none;
+            background: #ffffff;
+            color: #0a1628;
+            letter-spacing: 0.5px;
             transition: all 0.3s ease;
         }
 
         input[type="number"]:focus {
-            border-color: #007bff;
-            box-shadow: 0 0 0 3px rgba(0,123,255,0.1);
+            border-color: #0a1628;
+            box-shadow: 0 0 0 2px rgba(10, 22, 40, 0.1);
         }
 
         button {
-            padding: 15px 30px;
-            font-size: 1em;
-            font-family: 'Inter', sans-serif;
-            font-weight: 500;
-            background: #007bff;
-            color: white;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: all 0.3s ease;
+    padding: 15px 30px;
+    font-size: 1em;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    background: #0a1628;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    position: relative; /* ADD THIS */
+    overflow: hidden; /* ADD THIS */
+}
+
+        button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(100, 181, 246, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        button:hover::before {
+            width: 300px;
+            height: 300px;
         }
 
         button:hover {
-            background: #0056b3;
-            transform: translateY(-1px);
+            background: #1a2538;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(10, 22, 40, 0.3);
         }
+           
 
         .result {
             display: none;
@@ -247,79 +357,136 @@
         }
 
         .vis-button {
-            padding: 8px 16px;
-            margin: 0 5px;
-            font-size: 0.9em;
-            background: #e9ecef;
-            border: 1px solid #dee2e6;
-            border-radius: 6px;
+            padding: 12px 24px;
+            margin: 0 8px;
+            font-size: 1em;
+            background: #ffffff;
+            border: 1px solid #d0e8f0;
+            border-radius: 15px;
             cursor: pointer;
-            transition: all 0.2s ease;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+            color: #0a1628;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
         }
 
         .vis-button.active {
-            background: #007bff;
+            background: #0a1628;
             color: white;
-            border-color: #007bff;
+            border-color: #0a1628;
+            box-shadow: 0 2px 8px rgba(10, 22, 40, 0.2);
+        }
+
+        .vis-button:hover {
+            background: #e8f4f8;
+            transform: translateY(-1px);
         }
 
         .comparison {
             margin-top: 25px;
+            overflow: visible; 
         }
 
         .bar-container {
-            margin: 15px 0;
+            margin: 20px 0;
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 20px;
+            overflow: visible; 
+            padding-right: 120px; 
         }
 
         .bar-label {
-            min-width: 120px;
-            font-size: 1em;
-            color: #495057;
-            font-weight: 500;
+            min-width: 140px;
+            font-size: 1.1em;
+            color: #0a1628;
+            font-weight: 400;
+            font-family: 'Cormorant Garamond', serif;
+            letter-spacing: 0.3px;
         }
 
         .bar-wrapper {
             flex: 1;
             position: relative;
-            min-height: 40px;
+            min-height: 45px;
             display: flex;
             align-items: center;
-        }
-
-        .bar {
-            height: 40px;
-            background: #007bff;
-            border-radius: 8px;
-            transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-            min-width: 40px;
-        }
-
-        .bar.guess {
-            background: #28a745;
-        }
-
-        .bar.actual {
-            background: #dc3545;
+            overflow: visible; /* ADD THIS */
         }
 
         .bar-value {
             position: absolute;
             left: 100%;
-            margin-left: 10px;
-            font-weight: 600;
-            color: #495057;
+            margin-left: 15px;
+            font-weight: 500;
+            color: #0a1628;
             white-space: nowrap;
-            font-size: 0.9em;
+            font-size: 1em;
+            font-family: 'Cormorant Garamond', serif;
+            letter-spacing: 0.3px;
+            z-index: 10; /* ADD THIS */
         }
+
+        .bar {
+            height: 45px;
+            background: #0a1628;
+            border-radius: 15px;
+            transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            min-width: 45px;
+            box-shadow: 0 2px 8px rgba(10, 22, 40, 0.2);
+            position: relative; /* ADD THIS */
+            overflow: hidden; /* ADD THIS */
+        }
+
+        .bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.2),
+                transparent
+            );
+            animation: wave 3s ease-in-out infinite;
+        }
+
+        @keyframes wave {
+            0% {
+                left: -100%;
+            }
+            50%, 100% {
+                left: 100%;
+            }
+        }
+
+        .bar.guess::after {
+            animation-delay: 0.5s;
+        }
+
+        .bar.actual::after {
+            animation-delay: 1s;
+        }
+
+        .bar.guess {
+            background: #2c3e50;
+        }
+
+        .bar.actual {
+            background: #34495e;
+        }
+
 
         .scale-container {
             display: none;
-            margin: 20px 0;
+            margin: 30px 0;
             position: relative;
-            height: 60px;
+            height: 80px;
+            padding: 0 10px;
         }
 
         .scale-line {
@@ -350,11 +517,18 @@
 
         .scale-label {
             position: absolute;
-            top: -25px;
-            font-size: 0.8em;
-            color: #495057;
+            top: -30px;
+            font-size: 0.9em;
+            color: #0a1628;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 500;
             transform: translateX(-50%);
             white-space: nowrap;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 4px 8px;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border: 1px solid #e8f4f8;
         }
 
         .feedback {
@@ -428,6 +602,7 @@
             .container {
                 max-width: 100%;
                 border-radius: 15px;
+                min-height: 90vh;
             }
             
             .tab-button {
@@ -437,6 +612,7 @@
             
             .tab-content {
                 padding: 20px;
+                min-height: 70vh;
             }
             
             h1 {
@@ -482,6 +658,7 @@
                 flex-direction: column;
                 align-items: flex-start;
                 gap: 5px;
+                padding-right: 0;
             }
             
             .bar-label {
@@ -497,6 +674,8 @@
                 flex-direction: column;
                 align-items: flex-start;
                 gap: 5px;
+                overflow: visible; 
+                padding-right: 150px; 
             }
             
             .estimate-label {
@@ -506,6 +685,7 @@
             
             .estimate-bar-wrapper {
                 width: 100%;
+                overflow: visible; 
             }
             
             .estimates-table {
@@ -519,8 +699,13 @@
         }
 
         @media (max-width: 480px) {
-            h1 {
-                font-size: 1.8em;
+            body {
+                padding: 5px;
+            }
+            
+            .container {
+                border-radius: 10px;
+                min-height: 95vh;
             }
             
             .tab-button {
@@ -530,6 +715,11 @@
             
             .tab-content {
                 padding: 15px;
+                min-height: 80vh;
+            }
+            
+            h1 {
+                font-size: 1.8em;
             }
             
             .item-name {
@@ -544,6 +734,11 @@
                 font-size: 1.1em;
             }
             
+            /* Disable water animation on small screens for performance */
+            body::before {
+                display: none;
+            }
+            
             .feedback {
                 font-size: 1.2em;
                 padding: 12px;
@@ -553,12 +748,67 @@
             .estimate-value {
                 font-size: 0.8em;
                 margin-left: 5px;
+                z-index: 10; 
             }
         }
 
         .compare-content {
-            max-width: 800px;
+            max-width: 100%; /* CHANGE from 800px */
             margin: 0 auto;
+            height: 100%; /* ADD THIS */
+            display: flex; /* ADD THIS */
+            flex-direction: column; /* ADD THIS */
+        }
+
+        .estimates-comparison {
+            margin-bottom: 40px;
+            flex-shrink: 0; /* ADD THIS - prevents squishing */
+        }
+
+        .estimate-bars {
+            display: flex;
+            flex-direction: column;
+            gap: 20px; /* INCREASE from 15px for more breathing room */
+            padding-right: 0; /* ADD THIS - remove any padding */
+        }
+
+        .estimate-bar-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 0; /* CHANGE from 10px */
+            overflow: visible;
+            padding-right: 0; /* REMOVE the 150px padding */
+            width: 100%; /* ADD THIS */
+        }
+
+        .estimate-label {
+            min-width: 200px;
+            max-width: 200px; /* ADD THIS */
+            font-weight: 500;
+            color: #495057;
+            font-size: 0.9em;
+            flex-shrink: 0; /* ADD THIS - prevents label from shrinking */
+        }
+
+        .estimate-bar-wrapper {
+            flex: 1;
+            position: relative;
+            min-height: 40px;
+            display: flex;
+            align-items: center;
+            overflow: visible;
+            margin-right: 120px; /* ADD THIS - space for the value */
+        }
+
+        .estimate-value {
+            position: absolute;
+            left: calc(100% + 10px); /* CHANGE - calculate from bar end */
+            font-weight: 600;
+            color: #495057;
+            white-space: nowrap;
+            font-size: 0.85em;
+            z-index: 10;
         }
 
         .compare-content h2 {
@@ -573,38 +823,25 @@
             margin-bottom: 30px;
         }
 
-        .estimates-comparison {
-            margin-bottom: 40px;
+        .water-icon {
+            display: inline-block;
+            animation: drip 2s ease-in-out infinite;
         }
 
-        .estimate-bars {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
+        @keyframes drip {
+            0%, 100% {
+                transform: translateY(0) scale(1);
+            }
+            25% {
+                transform: translateY(-10px) scale(1.1);
+            }
+            50% {
+                transform: translateY(0) scale(1);
+            }
+            75% {
+                transform: translateY(5px) scale(0.95);
+            }
         }
-
-        .estimate-bar-container {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 10px;
-        }
-
-        .estimate-label {
-            min-width: 200px;
-            font-weight: 500;
-            color: #495057;
-            font-size: 0.9em;
-        }
-
-        .estimate-bar-wrapper {
-            flex: 1;
-            position: relative;
-            min-height: 40px;
-            display: flex;
-            align-items: center;
-        }
-
         .estimate-bar {
             height: 40px;
             background: #007bff;
@@ -626,45 +863,133 @@
 
         .estimates-table {
             overflow-x: auto;
+            margin-top: 30px;
+            flex: 1; /* ADD THIS */
+            max-height: 500px; /* ADD THIS - prevents it from getting too tall */
         }
 
         .estimates-table table {
             width: 100%;
             border-collapse: collapse;
-            background: white;
-            border-radius: 8px;
+            background: #ffffff;
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 16px rgba(10, 22, 40, 0.1);
+            border: 1px solid #e8f4f8;
+            min-width: 700px; /* ADD THIS - ensures horizontal scroll on small screens */
         }
 
         .estimates-table th,
         .estimates-table td {
-            padding: 12px 15px;
+            padding: 18px 20px;
             text-align: left;
-            border-bottom: 1px solid #e9ecef;
+            border-bottom: 1px solid #e8f4f8;
         }
 
         .estimates-table th {
             background: #f8f9fa;
-            font-weight: 600;
-            color: #495057;
+            font-weight: 500;
+            color: #0a1628;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1em;
+            letter-spacing: 0.5px;
         }
 
         .estimates-table td {
-            color: #6c757d;
+            color: #495057;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1em;
+            letter-spacing: 0.3px;
         }
 
         .estimates-table a {
-            color: #1976d2;
+            color: #0a1628;
             text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid #0a1628;
         }
 
         .estimates-table a:hover {
-            text-decoration: underline;
+            border-bottom-color: transparent;
+        }
+        .water-droplets {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .droplet {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: rgba(100, 181, 246, 0.4);
+            border-radius: 50%;
+            animation: float 15s ease-in-out infinite;
+            opacity: 0;
+        }
+
+        .droplet:nth-child(1) {
+            left: 10%;
+            animation-delay: 0s;
+            animation-duration: 12s;
+        }
+
+        .droplet:nth-child(2) {
+            left: 30%;
+            animation-delay: 2s;
+            animation-duration: 14s;
+        }
+
+        .droplet:nth-child(3) {
+            left: 50%;
+            animation-delay: 4s;
+            animation-duration: 16s;
+        }
+
+        .droplet:nth-child(4) {
+            left: 70%;
+            animation-delay: 6s;
+            animation-duration: 13s;
+        }
+
+        .droplet:nth-child(5) {
+            left: 90%;
+            animation-delay: 8s;
+            animation-duration: 15s;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+            }
+            90% {
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateY(-100px) scale(1.5);
+                opacity: 0;
+            }
         }
     </style>
 </head>
 <body>
+    <body>
+    <div class="water-droplets">
+        <div class="droplet"></div>
+        <div class="droplet"></div>
+        <div class="droplet"></div>
+        <div class="droplet"></div>
+        <div class="droplet"></div>
+    </div>
     <div class="container">
         <div class="tabs">
             <button class="tab-button active" onclick="switchTab('game')">Guess Water Use</button>
@@ -673,7 +998,7 @@
         </div>
         
         <div id="game-tab" class="tab-content active">
-            <h1>Water Footprint</h1>
+            <h1><span class="water-icon">💧</span></h1>
             
             <div class="game-container">
                 <div class="source-selector">
@@ -867,7 +1192,19 @@
                 initializeApp();
             }
         }
-
+        function formatUnits(number) {
+            if (number >= 1000000) {
+                return (number / 1000000).toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 2 }) + 'M';
+            } else if (number >= 1000) {
+                return (number / 1000).toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 2 }) + 'K';
+            } else if (number >= 1) {
+                return number.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 2 });
+            } else if (number >= 0.01) {
+                return number.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 4 });
+            } else {
+                return number.toLocaleString('en-US', { minimumFractionDigits: 4, maximumFractionDigits: 6 });
+            }
+        }
         function initializeApp() {
             populateCompareTab();
             updateSource();
@@ -1014,14 +1351,24 @@
 
             document.getElementById('itemName').textContent = currentItem.name;
             document.getElementById('waterAmount').textContent = formatWater(currentItem.water);
-            document.getElementById('itemSource').innerHTML = `${currentItem.source} <a href="${currentItem.link}" target="_blank" style="color: #1976d2; text-decoration: none;">[Source]</a>`;
+            document.getElementById('itemSource').innerHTML = `${currentItem.source} <a href="${currentItem.link}" target="_blank">[Source]</a>`;
             
             document.getElementById('question').innerHTML = isInverseQuestion
                 ? `How many ChatGPT queries equal ${currentItem.name.toLowerCase()}?`
                 : `How many ${currentItem.plural} equal one ChatGPT query?`;
             
+            // Clear input and hide result
             document.getElementById('guessInput').value = '';
             document.getElementById('result').classList.remove('show');
+            
+            // Reset bar widths to prevent visual glitches
+            document.getElementById('guessBar').style.width = '0%';
+            document.getElementById('actualBar').style.width = '0%';
+            document.getElementById('guessBarValue').textContent = '';
+            document.getElementById('actualBarValue').textContent = '';
+            
+            // Focus back on input for convenience
+            document.getElementById('guessInput').focus();
         }
 
         function submitGuess() {
@@ -1069,9 +1416,22 @@
 
                 document.getElementById('guessMarker').style.left = guessPosition + '%';
                 document.getElementById('actualMarker').style.left = actualPosition + '%';
-                document.getElementById('guessScaleLabel').style.left = guessPosition + '%';
+                
+                // Position labels with overlap prevention
+                const minLabelDistance = 15; // Minimum distance between labels in percentage
+                let guessLabelPos = guessPosition;
+                let actualLabelPos = actualPosition;
+                
+                if (Math.abs(guessPosition - actualPosition) < minLabelDistance) {
+                    // Labels are too close, offset them
+                    const midpoint = (guessPosition + actualPosition) / 2;
+                    guessLabelPos = Math.max(5, midpoint - minLabelDistance / 2);
+                    actualLabelPos = Math.min(95, midpoint + minLabelDistance / 2);
+                }
+                
+                document.getElementById('guessScaleLabel').style.left = guessLabelPos + '%';
                 document.getElementById('guessScaleLabel').textContent = `Your Guess: ${formatUnits(guess)}`;
-                document.getElementById('actualScaleLabel').style.left = actualPosition + '%';
+                document.getElementById('actualScaleLabel').style.left = actualLabelPos + '%';
                 document.getElementById('actualScaleLabel').textContent = `Actual: ${formatUnits(actualRatio)}`;
             }
 
