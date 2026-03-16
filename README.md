@@ -1,4 +1,4 @@
-# Water Use Game
+# Visualizing AI Water Use
 
 An interactive web application to learn about water footprints and AI environmental impact through an engaging guessing game and data visualization. Play at https://quiquae.github.io/water-use/ :)
 
@@ -13,7 +13,8 @@ An interactive web application to learn about water footprints and AI environmen
 
 - `index.html`: Main application with tabbed interface
 - `data.json`: Contains all water usage data and estimates (easily updatable)
-- `README.md`: This file
+- `wampum-codes.json`: My wampum codes ethical framework.
+- `README.md`: This file!
 
 ## Data Management
 

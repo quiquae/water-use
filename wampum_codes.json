@@ -1,0 +1,15 @@
+{
+  "wampum": {
+    "project_name": "Visualizing AI Water Use",
+    "purpose": "An interactive web application challenging misconceptions about water use and helping individuals visualize and understand the impacts of AI on water resources.",
+    "community_values": [
+      "Show the data and highlight when estimates for water use differ so people can make their own, informed decisions",
+      "A comparative approach: contrasting AI water use with other high-impact sources",
+      "Cite all sources— every estimate is transparent and traceable",
+      "Free and open — no barriers to access"
+    ],
+    "limitations": "This code should not be used for commercial purposes or to misrepresent environmental data.",
+    "accountability_link": "https://github.com/quiquae/water-use",
+    "legacy_plan": "If this project is no longer maintained, the source code remains open-sourced for educational use and adaptation."
+  }
+}
