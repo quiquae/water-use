@@ -1,4 +1,4 @@
-# Water Use Game
+# Visualizing AI Water Use
 
 An interactive web application to learn about water footprints and AI environmental impact through an engaging guessing game and data visualization. Play at https://quiquae.github.io/water-use/ :)
 
