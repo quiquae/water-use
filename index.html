@@ -12,12 +12,15 @@
             padding: 0;
             box-sizing: border-box;
         }
+        html {
+            scroll-behavior: smooth;
+        }
 
         body {
             font-family: 'Cormorant Garamond', serif;
             background: #0a1628;
             min-height: 100vh;
-            padding: 40px 20px;
+            padding: 20px 20px 40px 20px; 
             color: #0a1628;
             display: flex;
             flex-direction: column;
@@ -64,6 +67,26 @@
             box-shadow: 0 30px 90px rgba(0,0,0,0.5);
             overflow: visible;
             min-height: 80vh;
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(100, 181, 246, 0.02) 2px,
+                    rgba(100, 181, 246, 0.02) 4px
+                );
+            pointer-events: none;
+            border-radius: 30px;
+            opacity: 0.3;
         }
 
         .tab-content {
@@ -1471,6 +1494,17 @@
 
         // Initialize on page load
         loadData();
+        
+        // Force scroll to top on page load
+        window.addEventListener('load', function() {
+            window.scrollTo(0, 0);
+            document.documentElement.scrollTop = 0;
+        });
+
+        // Also on refresh
+        if (history.scrollRestoration) {
+            history.scrollRestoration = 'manual';
+        }
     </script>
 </body>
 </html>
