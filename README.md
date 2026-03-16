@@ -1,6 +1,6 @@
 # Water Use Game
 
-An interactive web application to learn about water footprints and AI environmental impact through an engaging guessing game and data visualization.
+An interactive web application to learn about water footprints and AI environmental impact through an engaging guessing game and data visualization. Play at https://quiquae.github.io/water-use/ :)
 
 ## Features
 
