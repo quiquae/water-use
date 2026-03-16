@@ -13,7 +13,7 @@ An interactive web application to learn about water footprints and AI environmen
 
 - `index.html`: Main application with tabbed interface
 - `data.json`: Contains all water usage data and estimates (easily updatable)
-- 'wampum-codes.json': My wampum codes ethical framework.
+- `wampum-codes.json`: My wampum codes ethical framework.
 - `README.md`: This file!
 
 ## Data Management
