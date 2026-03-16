@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Footprint</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            background: #0a1628;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .game-container {
+            background: white;
+            border-radius: 30px;
+            padding: 50px 40px;
+            max-width: 650px;
+            width: 100%;
+            box-shadow: 0 30px 90px rgba(0,0,0,0.5);
+        }
+
+        h1 {
+            color: #0a1628;
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.8em;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        .source-selector {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            border: 1px solid #e0e0e0;
+        }
+
+        .source-selector label {
+            display: block;
+            font-size: 1em;
+            color: #0a1628;
+            margin-bottom: 10px;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        select {
+            width: 100%;
+            padding: 12px 15px;
+            font-size: 1.1em;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+            border: 2px solid #d0e8f0;
+            border-radius: 10px;
+            background: white;
+            cursor: pointer;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        select:focus {
+            border-color: #0a1628;
+            box-shadow: 0 0 0 3px rgba(10, 22, 40, 0.1);
+        }
+
+        .item-display {
+            background: #e8f4f8;
+            padding: 30px;
+            border-radius: 20px;
+            margin-bottom: 35px;
+            text-align: center;
+            border: 1px solid #d0e8f0;
+        }
+
+        .item-name {
+            font-size: 1.8em;
+            color: #0a1628;
+            font-weight: 400;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+        }
+
+        .water-amount {
+            font-size: 2.2em;
+            color: #0a1628;
+            font-weight: 300;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .item-source {
+            font-size: 0.9em;
+            color: #666;
+            font-style: italic;
+        }
+
+        .question {
+            font-size: 1.5em;
+            color: #0a1628;
+            margin-bottom: 25px;
+            text-align: center;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            line-height: 1.4;
+        }
+
+        .input-group {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+
+        input[type="number"] {
+            flex: 1;
+            padding: 16px 20px;
+            font-size: 1.2em;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            border: 2px solid #d0e8f0;
+            border-radius: 15px;
+            outline: none;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        input[type="number"]:focus {
+            border-color: #0a1628;
+            box-shadow: 0 0 0 3px rgba(10, 22, 40, 0.1);
+        }
+
+        button {
+            padding: 16px 35px;
+            font-size: 1.1em;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+            letter-spacing: 1px;
+            background: #0a1628;
+            color: white;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background: #152844;
+            transform: translateY(-2px);
+        }
+
+        .result {
+            display: none;
+            margin-top: 35px;
+        }
+
+        .result.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .comparison {
+            margin-top: 25px;
+        }
+
+        .bar-container {
+            margin: 20px 0;
+        }
+
+        .bar-label {
+            font-size: 1em;
+            margin-bottom: 8px;
+            color: #0a1628;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .bar {
+            height: 45px;
+            background: #0a1628;
+            border-radius: 10px;
+            transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            padding: 0 15px;
+            color: white;
+            font-weight: 400;
+            font-size: 0.95em;
+        }
+
+        .bar.guess {
+            background: #4a5f7f;
+        }
+
+        .bar.actual {
+            background: #1a3a5a;
+        }
+
+        .feedback {
+            text-align: center;
+            font-size: 1.6em;
+            font-weight: 400;
+            margin: 25px 0;
+            padding: 18px;
+            border-radius: 15px;
+            letter-spacing: 0.5px;
+        }
+
+        .feedback.perfect {
+            background: #c8f5d8;
+            color: #0a1628;
+            border: 1px solid #90e6a8;
+        }
+        
+        .feedback.quiteclose {
+            background: #d0f0e8;
+            color: #0a1628;
+            border: 1px solid #a0dcc8;
+        }
+        
+        .feedback.close {
+            background: #d8ebf5;
+            color: #0a1628;
+            border: 1px solid #a8d0e6;
+        }
+        
+        .feedback.far {
+            background: #e8f4f8;
+            color: #0a1628;
+            border: 1px solid #d0e8f0;
+        }
+
+        .next-button {
+            width: 100%;
+            margin-top: 25px;
+        }
+
+        .source-info {
+            font-size: 0.9em;
+            color: #666;
+            font-style: italic;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <h1>💧</h1>
+        
+        <div class="source-selector">
+            <label for="sourceSelect">ChatGPT water usage estimate (gallons per query):</label>
+            <select id="sourceSelect" onchange="updateSource()">
+                <option value="0">UC Riverside Study (0.13 gal)</option>
+                <option value="1">Making AI  (0.08 gal)</option>
+                <option value="2">Sam Altman (0.000085 gal)</option>
+                <option value="3">Conservative Estimate (0.26 gal)</option>
+            </select>
+            <div class="source-info" id="sourceInfo"></div>
+        </div>
+
+        <div class="item-display">
+            <div class="item-name" id="itemName"></div>
+            <div class="water-amount" id="waterAmount"></div>
+            <div class="item-source" id="itemSource"></div>
+        </div>
+
+        <div class="question" id="question"></div>
+
+        <div class="input-group">
+            <input type="number" id="guessInput" placeholder="Enter number" min="0" step="0.0001">
+            <button onclick="submitGuess()">Submit</button>
+        </div>
+
+        <div class="result" id="result">
+            <div class="feedback" id="feedback"></div>
+            
+            <div class="comparison">
+                <div class="bar-container">
+                    <div class="bar-label">Your Guess</div>
+                    <div class="bar guess" id="guessBar"></div>
+                </div>
+                
+                <div class="bar-container">
+                    <div class="bar-label" id="actualBarLabel">Actual</div>
+                    <div class="bar actual" id="actualBar"></div>
+                </div>
+            </div>
+
+            <button class="next-button" onclick="nextRound()">Next</button>
+        </div>
+    </div>
+
+    <script>
+        // Water usage data (in gallons) - easily replaceable with file input
+        const items = [
+            { 
+                // Car
+                name: "A car", 
+                water: 17831, 
+                plural: "cars",
+                source: "Water Footprint Calculator (Bergen et Al)",
+                link: "https://watercalculator.org/footprint/the-hidden-water-in-everyday-products/" 
+            },
+            { 
+                name: "A piece of paper", 
+                water: 1.3, 
+                plural: "pieces of paper",
+                source: "Water Footprint Calculator (Bergen et Al)",
+                link: "https://watercalculator.org/footprint/the-hidden-water-in-everyday-products/" 
+            },
+            { 
+                name: "An average American shower", 
+                water: 15.8, 
+                plural: "average American showers",
+                source: "2016 Residential End Uses of Water",
+                link: "https://www.waterrf.org/research/projects/residential-end-uses-water-version-2"
+            },
+            { 
+                name: "A cotton t-shirt", 
+                water: 659, 
+                plural: "cotton t-shirts",
+                source: "Water Footprint Calculator (Bergen et Al)",
+                link: "https://watercalculator.org/footprint/the-hidden-water-in-everyday-products/"
+            },
+            { 
+                name: "A teaspoon of water", 
+                water: 0.00034, 
+                plural: "teaspoons of water",
+                source: "US Liquid Measurements",
+                link: "https://www.nist.gov/pml/owm/metric-si/volume"
+            }
+        ];
+        
+        const chatGPTEstimates = [
+            { 
+                source: "UC Riverside Study", 
+                water: 4.50805815e-3, // 500ml converted to gallons
+                info: "Estimated U.S. Average: 29.3 GPT-3 queries per 500 ml (Ren et al. 2023)",
+                link: "https://arxiv.org/abs/2304.03271"
+            },
+            { 
+                source: "Google Gemini Estimate", 
+                water: 6.868473e-5, // 300ml converted to gallons
+                info: "Google Cloud Report on Environmental Impacts of AI",
+                link: "https://cloud.google.com/blog/products/infrastructure/measuring-the-environmental-impact-of-ai-inference"
+            },
+            { 
+                source: "Sam Altman", 
+                water: 8.5e-5, 
+                info: "CEO estimate from blog post (June 2025 archive)",
+                link: "https://web.archive.org/web/20250610000000*/https://samaltman.com/ai-and-water"
+            },
+            { 
+                source: "Conservative Estimate", 
+                water: 1, // 1L converted to gallons
+                info: "Upper-bound estimate accounting for indirect usage (UC Riverside 2023)",
+                link: "https://arxiv.org/abs/2304.03271"
+            }
+        ];
+
+        const RATIO_THRESHOLD = 10; // If item is >10x query, ask inverse question
+
+        let currentItem;
+        let usedItems = [];
+        let selectedSourceIndex = 0;
+        let isInverseQuestion = false;
+
+        function formatWater(gallons) {
+            return gallons >= 1 
+                ? `${gallons.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 2 })} gallons`
+                : `${gallons.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 4 })} gallons`;
+        }
+
+        function formatUnits(number) {
+            return number >= 0.01
+                ? number.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 4 })
+                : number.toLocaleString('en-US', { minimumFractionDigits: 4, maximumFractionDigits: 6 });
+        }
+
+        function updateSource() {
+            selectedSourceIndex = parseInt(document.getElementById('sourceSelect').value);
+            const estimate = chatGPTEstimates[selectedSourceIndex];
+            document.getElementById('sourceInfo').textContent = estimate.info;
+            
+            if (document.getElementById('result').classList.contains('show')) {
+                const guess = parseFloat(document.getElementById('guessInput').value);
+                if (!isNaN(guess)) showResult(guess);
+            }
+        }
+
+        function loadNewItem() {
+            if (usedItems.length === items.length) usedItems = [];
+
+            const availableItems = items.filter((item, index) => !usedItems.includes(index));
+            const randomIndex = Math.floor(Math.random() * availableItems.length);
+            currentItem = availableItems[randomIndex];
+            usedItems.push(items.indexOf(currentItem));
+
+            const chatGPTWater = chatGPTEstimates[selectedSourceIndex].water;
+            const ratio = currentItem.water / chatGPTWater;
+            
+            // Determine question direction based on ratio
+            isInverseQuestion = ratio > RATIO_THRESHOLD;
+
+            document.getElementById('itemName').textContent = currentItem.name;
+            document.getElementById('waterAmount').textContent = formatWater(currentItem.water);
+            document.getElementById('itemSource').textContent = currentItem.source;
+            
+            document.getElementById('question').innerHTML = isInverseQuestion
+                ? `How many ChatGPT queries equal ${currentItem.name.toLowerCase()}?`
+                : `How many ${currentItem.plural} equal one ChatGPT query?`;
+            
+            document.getElementById('guessInput').value = '';
+            document.getElementById('result').classList.remove('show');
+        }
+
+        function submitGuess() {
+            const guess = parseFloat(document.getElementById('guessInput').value);
+            
+            if (isNaN(guess) || guess < 0) {
+                alert('Please enter a valid number');
+                return;
+            }
+
+            showResult(guess);
+        }
+
+        function showResult(guess) {
+            const chatGPTWater = chatGPTEstimates[selectedSourceIndex].water;
+            const actualRatio = isInverseQuestion 
+                ? currentItem.water / chatGPTWater  // queries per item
+                : chatGPTWater / currentItem.water; // items per query
+            
+            const maxValue = Math.max(guess, actualRatio);
+            const guessWidth = (guess / maxValue) * 100;
+            const actualWidth = (actualRatio / maxValue) * 100;
+
+            document.getElementById('guessBar').style.width = guessWidth + '%';
+            document.getElementById('guessBar').textContent = formatUnits(guess);
+            document.getElementById('actualBar').style.width = actualWidth + '%';
+            document.getElementById('actualBar').textContent = formatUnits(actualRatio);
+
+            const percentDiff = (Math.abs(guess - actualRatio) / actualRatio) * 100;
+            const feedback = document.getElementById('feedback');
+            
+            
+            if (percentDiff < 5) {
+                feedback.textContent = 'Perfect';
+                feedback.className = 'feedback perfect';
+            }  else if (percentDiff < 15) {
+                feedback.textContent = 'Remarkably close';
+                feedback.className = 'feedback quiteclose';
+            } else if (percentDiff < 40) {
+                feedback.textContent = 'A reasonable estimate';
+                feedback.className = 'feedback close';
+            } else if (percentDiff < 70) {
+                feedback.textContent = 'Not quite';
+                feedback.className = 'feedback close';
+            } else {
+                feedback.textContent = 'Quite different';
+                feedback.className = 'feedback far';
+            }
+
+            document.getElementById('actualBarLabel').textContent = `Actual (${chatGPTEstimates[selectedSourceIndex].source})`;
+            document.getElementById('result').classList.add('show');
+        }
+
+        function nextRound() {
+            loadNewItem();
+        }
+
+        // Allow Enter key to submit
+        document.getElementById('guessInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') submitGuess();
+        });
+
+        // Initialize on page load
+        updateSource();
+        loadNewItem();
+    </script>
+</body>
+</html>
