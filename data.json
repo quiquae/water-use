@@ -42,19 +42,19 @@
       "water": 0.00450805815,
       "info": "Estimated U.S. Average: 29.3 GPT-3 queries per 500 ml (Ren et al. 2023). Note: this takes into account first, second and third-scope water use, including water used in cooling, constructing and making the data center and its components.",
       "link": "https://arxiv.org/abs/2304.03271"
-    },
-    {
+      },
+      {
       "source": "Google Cloud Report",
       "water": 6.868473e-5,
-      "info": "Google Cloud Report on Environmental Impacts of AI. Note: this is an estimate for the water used per inference, only taking into account first-scope use for cooling a data center ",
+      "info": "Google Cloud Report on Measuring the Environmental Impacts of AI: 0.26 milliliters (or about five drops) of water per Gemini query. Note: this is an estimate for the water used per inference, only taking into account first-scope use for cooling a data center ",
       "link": "https://cloud.google.com/blog/products/infrastructure/measuring-the-environmental-impact-of-ai-inference/ "
-    },
-    {
+      },
+      {
       "source": "Sam Altman",
       "water": 0.000085,
-      "info": "CEO estimate from blog post (June 2025 archive). Note: this is only the water used for the query itself, not the training or other operations.",
-      "link": "https://web.archive.org/web/20250610000000*/https://samaltman.com/ai-and-water"
-    }
+      "info": "Altman's own estimate from blog post \"The Gentle Singularity\" suggests a single query uses 1/15 of a teaspoon of water. Note: this is only the water used for the query itself, and does not take into account the cooling of data center, model training or any further-scope water uses.",
+      "link": "https://blog.samaltman.com/the-gentle-singularity"
+      }
     
   ]
 }

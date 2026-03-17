@@ -230,8 +230,9 @@
             margin-bottom: 40px;
             text-align: center;
             border: 1px solid #d0e8f0;
-            position: relative; /* ADD THIS */
-            animation: gentlePulse 4s ease-in-out infinite; /* ADD THIS */
+            position: relative;
+            animation: gentlePulse 4s ease-in-out infinite;
+            cursor: pointer; /* ADD THIS LINE */
         }
 
         @keyframes gentlePulse {
@@ -257,6 +258,15 @@
             font-weight: 300;
             margin-bottom: 12px;
             letter-spacing: 0.5px;
+            opacity: 0; /* KEEP THIS */
+            transition: opacity 0.3s ease; /* KEEP THIS */
+            max-height: 0; /* ADD THIS - collapses the space */
+            overflow: hidden; /* ADD THIS */
+        }
+
+        .item-display:hover .water-amount {
+            opacity: 1;
+            max-height: 100px; /* ADD THIS - expands the space */
         }
 
         .item-source {
@@ -848,6 +858,25 @@
             margin-bottom: 30px;
         }
 
+        .unit-selector {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            font-family: 'Cormorant Garamond', serif;
+            color: #495057;
+        }
+
+        .unit-selector select {
+            padding: 8px 12px;
+            border: 1px solid #d0e8f0;
+            border-radius: 12px;
+            background: #ffffff;
+            color: #0a1628;
+            font-family: 'Cormorant Garamond', serif;
+            cursor: pointer;
+        }
+
         .water-icon {
             display: inline-block;
             animation: drip 2s ease-in-out infinite;
@@ -1029,7 +1058,7 @@
                     <label for="sourceSelect">Select ChatGPT water usage estimate:</label>
                     <select id="sourceSelect" onchange="updateSource()">
                         <option value="0">UC Riverside Study (~0.0045 gal)</option>
-                        <option value="1">Making AI (~0.00007 gal)</option>
+                        <option value="1">Google Cloud (~0.00007 gal)</option>
                         <option value="2">Sam Altman (~0.000085 gal)</option>
                     </select>
                     <div class="source-info" id="sourceInfo"></div>
@@ -1095,11 +1124,7 @@
 
                 <p>It often seems like everyone's talking about AI water use. Huge proportions of Americans report being deeply concerned about AI's impact on water consumption (McDermott and Sanders) and oppose data centers being built near them (Data Center Watch Report). Yet how much water data centers actually use, and how important this consumption is, can be extremely difficult to pin down. Sam Altman says a single Chat-GPT query uses "one-fifteenth of a teaspoon" of water (Altman). According to UC Riverside and UT Arlington researchers, taking into account other types of water used in cooling the data center, generating its electricity, and creating the chips and materials produces an estimate closer to 3.5 teaspoons per query, about fifty times the number suggested by Altman (Li et al.). The huge differences between estimates like these reveal the difficulties of estimating AI's true impact on water resources, and the way that the AI water consumption debate has become a battleground for broader questions about the role of technology in society. This essay will argue that data center water consumption can be a significant problem in areas experiencing high water stress, but must be understood in context of the community that a data center is situated in and the impacts of other consumptive industries on the environment.</p>
 
-                <h3>Estimating Water Use: Indirect and Direct Water Consumption</h3>
-
-                <p>AI water use is difficult to pin down because there are many indirect and direct forms of water consumption, whose inclusion or exclusion dramatically alters estimates. Water is used in three key scopes across the AI model training and query process. Firstly, water is used in datacenter cooling, both on a server-level and facility level, usually through cooling towers, or air cooling systems (Li et al. 3). Cooling towers contaminate water, though water can be recycled for 3-10 cycles, while outside air water involves evaporating water and is usually more water-efficient but at highest demand during hot times when water supplies are most stressed (Li et al. 3). However, new forms of cooling are also being developed, including dry and air cooling which requires little direct water consumption but great deals of electricity, feeding into second-scope estimates (Gutierrez-Chavez). Second-scope water usage involves the water used to create electricity used to power the data center, which varies depending on how the electricity was generated and how much the center uses (Li et al. 4). Third-scope water use involves the water used in creating the chips and servers themselves, which can sometimes be recycled (Li et al. 4). These uses of water occur both when the model is trained, but also in the operations of each individual query.</p>
-
-                <p>The many scopes of water consumption in relation to AI explains the vast variance in water use estimates. For example, Sam Altman's 0.000085 gallons per query estimate takes into account only the water used for the individual query (Altman). A Google study taking into account only first-scope use in cooling a data center suggests that a single Gemini query uses "0.26 milliliters (or about five drops) of water" (Vahdat and Dean). The UT Riverside study, taking into account all scopes of water use, suggests an ultimate result of about 29.3 GPT-3 queries per 500 ml, or 220 queries per gallon of water (Li et al. 5). None of these estimates are wrong, precisely, but they are all conveying vastly different information. When comparing AI water use to other forms of consumption, it is thus crucial to ensure that the things being compared have calculated their impact in the same way.</p>
+                <h3> Click on the "Compare Estimates" tab to learn more about how to understand water consumption estimates! </h3>
 
                 <h3>Understanding Water Consumption</h3>
 
@@ -1139,7 +1164,7 @@
 
                 <p class="citation">Benjamin, Ruha. <em>Race after Technology: Abolitionist Tools for the New Jim Code</em>. Polity Press, 2019.</p>
 
-                <p class="citation">Crary, Alice, Lori Gruen and Carol J Adams. "The Predictably Grievous Harms of Effective Altruism." <em>OUPblog</em>, Oxford University Press blog, 12 Dec. 2022, blog.oup.com/2022/12/the-predictably-grievous-harms-of-effective-altruism/.</p>
+                <p class="citation">Crary, Alice, Lori Gruen and Carol J Adams. "The Predictably Grievous Harms of Effective Altruism." <em>OUPblog</em>, Oxford University Press blog, 12 Dec. 2022, blog.oup.com/2022/12/the-predictably-grievous-harms-of-effective-altruism/</p>
 
                 <p class="citation">"Chupadados the Datasucker: the hidden faces of our beloved technologies", <em>Chupadados</em>, Coding Rights, <a href="https://chupadados.codingrights.org/en/homepage/" target="_blank">https://chupadados.codingrights.org/en/homepage/</a></p>
 
@@ -1185,19 +1210,37 @@
         <div id="compare-tab" class="tab-content">
             <div class="compare-content">
                 <h2>ChatGPT Water Usage Estimates</h2>
+                <div class="unit-selector">
+                    <label for="unitSelect">Display units:</label>
+                    <select id="unitSelect" onchange="updateCompareUnits()">
+                        <option value="gallons">Gallons</option>
+                        <option value="teaspoons">Teaspoons</option>
+                        <option value="milliliters">Milliliters</option>
+                        <option value="liters">Liters</option>
+                    </select>
+                </div>
                 <p>Different studies and estimates provide varying figures for the water footprint of a single ChatGPT query. Here's a comparison:</p>
                 <p style="font-size: 0.9em; color: #6c757d; font-style: italic;">Note: Bars use logarithmic scaling to make small differences visible. The actual values vary by orders of magnitude.</p>
-                
+
                 <div class="estimates-comparison">
                     <div class="estimate-bars" id="estimateBars"></div>
                 </div>
+                
+
+                <h3>Estimating Water Use: Indirect and Direct Water Consumption</h3>
+
+                <p>AI water use is difficult to pin down because there are many indirect and direct forms of water consumption, whose inclusion or exclusion dramatically alters estimates. Water is used in three key scopes across the AI model training and query process. Firstly, water is used in datacenter cooling, both on a server-level and facility level, usually through cooling towers, or air cooling systems (Li et al. 3). Cooling towers contaminate water, though water can be recycled for 3-10 cycles, while outside air water involves evaporating water and is usually more water-efficient but at highest demand during hot times when water supplies are most stressed (Li et al. 3). However, new forms of cooling are also being developed, including dry and air cooling which requires little direct water consumption but great deals of electricity, feeding into second-scope estimates (Gutierrez-Chavez).</p>
+
+                <p>Second-scope water usage involves the water used to create electricity used to power the data center, which varies depending on how the electricity was generated and how much the center uses (Li et al. 4). Third-scope water use involves the water used in creating the chips and servers themselves, which can sometimes be recycled (Li et al. 4). These uses of water occur both when the model is trained, but also in the operations of each individual query.</p>
+
+                <p>The many scopes of water consumption in relation to AI explains the vast variance in water use estimates. For example, Sam Altman's 0.000085 gallons per query estimate takes into account only the water used for the individual query (Altman). A Google study taking into account only first-scope use in cooling a data center suggests that a single Gemini query uses "0.26 milliliters (or about five drops) of water" (Vahdat and Dean). The UT Riverside study, taking into account all scopes of water use, suggests an ultimate result of about 29.3 GPT-3 queries per 500 ml, or 220 queries per gallon of water (Li et al. 5). None of these estimates are wrong, precisely, but they are all conveying vastly different information. When comparing AI water use to other forms of consumption, it is thus crucial to ensure that the things being compared have calculated their impact in the same way.</p>
                 
                 <div class="estimates-table">
                     <table id="estimatesTable">
                         <thead>
                             <tr>
                                 <th>Source</th>
-                                <th>Water per Query (gallons)</th>
+                                <th id="unitHeader">Water per Query (gallons)</th>
                                 <th>Description</th>
                                 <th>Reference</th>
                             </tr>
@@ -1220,6 +1263,7 @@
         let selectedSourceIndex = 0;
         let isInverseQuestion = false;
         let currentVisualization = 'bars';
+        let currentUnit = 'gallons';
 
         // Load data from JSON file
         async function loadData() {
@@ -1279,18 +1323,18 @@
                 {
                 "source": "Google Cloud Report",
                 "water": 6.868473e-5,
-                "info": "Google Cloud Report on Environmental Impacts of AI. Note: this is an estimate for the water used per inference, only taking into account first-scope use for cooling a data center ",
+                "info": "Google Cloud Report on Measuring the Environmental Impacts of AI: 0.26 milliliters (or about five drops) of water per Gemini query. Note: this is an estimate for the water used per inference, only taking into account first-scope use for cooling a data center ",
                 "link": "https://cloud.google.com/blog/products/infrastructure/measuring-the-environmental-impact-of-ai-inference/ "
                 },
                 {
                 "source": "Sam Altman",
                 "water": 0.000085,
-                "info": "CEO estimate from blog post (June 2025 archive). Note: this is only the water used for the query itself, not the training or other operations.",
-                "link": "https://web.archive.org/web/20250610000000*/https://samaltman.com/ai-and-water"
+                "info": "Altman's own estimate from blog post \"The Gentle Singularity\", Note: this is only the water used for the query itself, not the training or other operations.",
+                "link": "https://blog.samaltman.com/the-gentle-singularity"
                 }
-                ];
-                initializeApp();
-            }
+            ];
+            initializeApp();
+        }
         }
         function formatUnits(number) {
             if (number >= 1000000) {
@@ -1306,7 +1350,7 @@
             }
         }
         function initializeApp() {
-            populateCompareTab();
+            updateCompareUnits();
             updateSource();
             loadNewItem();
         }
@@ -1317,9 +1361,42 @@
                 : `${gallons.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 4 })} gallons`;
         }
 
+        // Format a number using a fixed number of significant figures.
+        // This is used in the comparison tab to keep differences between estimates more apparent.
+        function formatSignificant(value, sig = 3) {
+            const number = typeof value === 'number' ? value : parseFloat(value);
+            if (Number.isNaN(number)) return String(value);
+            if (number === 0) return '0';
+
+            const abs = Math.abs(number);
+            const exponent = Math.floor(Math.log10(abs));
+            const decimals = Math.max(0, sig - exponent - 1);
+            const rounded = number.toFixed(decimals);
+            return rounded.replace(/\.?0+$/, '');
+        }
+
+        function getUnitConfig(unit) {
+            const units = {
+                gallons: { label: 'gallons', factor: 1, suffix: 'gal' },
+                teaspoons: { label: 'teaspoons', factor: 768, suffix: 'tsp' },
+                milliliters: { label: 'milliliters', factor: 3785.41, suffix: 'mL' },
+                liters: { label: 'liters', factor: 3.78541, suffix: 'L' }
+            };
+            return units[unit] || units.gallons;
+        }
+
+        function updateCompareUnits() {
+            const select = document.getElementById('unitSelect');
+            currentUnit = select.value;
+            const unitConfig = getUnitConfig(currentUnit);
+            document.getElementById('unitHeader').textContent = `Water per Query (${unitConfig.label})`;
+            populateCompareTab();
+        }
+
         function populateCompareTab() {
             const barsContainer = document.getElementById('estimateBars');
             const tableBody = document.getElementById('estimatesTableBody');
+            const unitConfig = getUnitConfig(currentUnit);
             
             // Clear existing content
             barsContainer.innerHTML = '';
@@ -1353,7 +1430,8 @@
                 
                 const value = document.createElement('div');
                 value.className = 'estimate-value';
-                value.textContent = formatWater(estimate.water);
+                const displayValue = estimate.water * unitConfig.factor;
+                value.textContent = `${formatSignificant(displayValue, 3)} ${unitConfig.suffix}`;
                 
                 barWrapper.appendChild(bar);
                 barWrapper.appendChild(value);
@@ -1378,7 +1456,7 @@
                 sourceCell.textContent = estimate.source;
                 
                 const waterCell = document.createElement('td');
-                waterCell.textContent = formatWater(estimate.water);
+                waterCell.textContent = `${formatSignificant(displayValue, 3)} ${unitConfig.suffix}`;
                 
                 const descCell = document.createElement('td');
                 descCell.textContent = estimate.info;
