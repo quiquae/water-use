@@ -30,7 +30,7 @@
     },
     {
       "name": "A teaspoon of water",
-      "water": 0.00034,
+      "water": 0.00130208,
       "plural": "teaspoons of water",
       "source": "US Liquid Measurements. Note: This is the actual water content of a teaspoon.",
       "link": "https://www.nist.gov/pml/owm/metric-si/volume"
