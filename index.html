@@ -313,20 +313,20 @@
         }
 
         button {
-    padding: 15px 30px;
-    font-size: 1em;
-    font-family: 'Cormorant Garamond', serif;
-    font-weight: 500;
-    background: #0a1628;
-    color: white;
-    border: none;
-    border-radius: 15px;
-    cursor: pointer;
-    letter-spacing: 1px;
-    transition: all 0.3s ease;
-    position: relative; /* ADD THIS */
-    overflow: hidden; /* ADD THIS */
-}
+            padding: 15px 30px;
+            font-size: 1em;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 500;
+            background: #0a1628;
+            color: white;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            position: relative; /* ADD THIS */
+            overflow: hidden; /* ADD THIS */
+        }
 
         button::before {
             content: '';
@@ -1007,7 +1007,6 @@
     </style>
 </head>
 <body>
-    <body>
     <div class="water-droplets">
         <div class="droplet"></div>
         <div class="droplet"></div>
@@ -1032,7 +1031,6 @@
                         <option value="0">UC Riverside Study (~0.0045 gal)</option>
                         <option value="1">Making AI (~0.00007 gal)</option>
                         <option value="2">Sam Altman (~0.000085 gal)</option>
-                        <option value="3">Conservative Estimate (1 gal)</option>
                     </select>
                     <div class="source-info" id="sourceInfo"></div>
                 </div>
@@ -1092,53 +1090,95 @@
         <div id="info-tab" class="tab-content">
             <div class="info-content">
                 <h2>About This Project</h2>
-                <p>AI and Water Use: Investigating the Estimates
-It often seems like everyone’s talking about AI water use. Huge proportions of Americans report being deeply concerned about AI’s impact on water consumption (McDermott and Sanders) and oppose data centers being built near them (Data Center Watch Report). Yet how much water data centers actually use, and how important this consumption is, can be extremely difficult to pin down. Sam Altman says a single Chat-GPT query uses “one-fifteenth of a teaspoon” of water (Altman). According to UC Riverside and UT Arlington researchers, taking into account other types of water used in cooling the data center, generating its electricity, and creating the chips and materials produces an estimate closer to 3.5 teaspoons per query, about fifty times the number suggested by Altman (Li et al.). The huge differences between estimates like these reveal the difficulties of estimating AI’s true impact on water resources, and the way that the AI water consumption debate has become a battleground for broader questions about the role of technology in society. This essay will argue that data center water consumption can be a significant problem in areas experiencing high water stress, but must be understood in context of the community that a data center is situated in and the impacts of other consumptive industries on the environment.
-Estimating Water Use: Indirect and Direct Water Consumption
-AI water use is difficult to pin down because there are many indirect and direct forms of water consumption, whose inclusion or exclusion dramatically alters estimates. Water is used in three key scopes across the AI model training and query process. Firstly, water is used in datacenter cooling, both on a server-level and facility level, usually through cooling towers, or air cooling systems (Li et al. 3). Cooling towers contaminate water, though water can be recycled for 3-10 cycles, while outside air water involves evaporating water and is usually more water-efficient but at highest demand during hot times when water supplies are most stressed (Li et al. 3). However, new forms of cooling are also being developed, including dry and air cooling which requires little direct water consumption but great deals of electricity, feeding into second-scope estimates (Gutierrez-Chavez). Second-scope water usage involves the water used to create electricity used to power the data center, which varies depending on how the electricity was generated and how much the center uses (Li et al. 4). Third-scope water use involves the water used in creating the chips and servers themselves, which can sometimes be recycled (Li et al. 4). These uses of water occur both when the model is trained, but also in the operations of each individual query. 
-The many scopes of water consumption in relation to AI explains the vast variance in water use estimates. For example, Sam Altman’s 0.000085 gallons per query estimate takes into account only the water used for the individual query (Altman). A Google study taking into account only first-scope use in cooling a data center suggests that a single Gemini query uses “0.26 milliliters (or about five drops) of water” (Vahdat and Dean). The UT Riverside study, taking into account all scopes of water use, suggests an ultimate result of about 29.3 GPT-3 queries per 500 ml, or 220 queries per gallon of water (Li et al. 5). None of these estimates are wrong, precisely, but they are all conveying vastly different information. When comparing AI water use to other forms of consumption, it is thus crucial to ensure that the things being compared have calculated their impact in the same way. 
-Understanding Water Consumption
-Creating greater transparency about AI water consumption is crucial because water use estimates have become a politicized battleground for debates about the technology itself. AI water use is reported as a top concern for ordinary Americans using the technology, and has been used to block data center building by many local communities (McDermott and Sanders).
-However, it is worth interrogating how language around water “consumption” can flatten the reality of how water is actually used. Water used throughout the process of querying AI models is usually made unavailable to the local watershed through evaporation or contamination, but is not used up in the ways people might expect. For example, water used to cool datacenters is evaporated, but not destroyed—that water is “consumed” and lost to local water systems, but ultimately returns to the hydrological cycle (Li et al. 3). Water contamination does prevent water being used without cleaning as potable water, but there are fewer clear metrics on what percentage of AI’s water consumption involves contamination. Thus, water use by data centers should be understood primarily as representing the water resources now inaccessible to the local community, not necessarily as water removed or destroyed from the environment as a whole. 
-Similarly, water consumption also varies drastically by region and type of data center, meaning that where your Chat-GPT query gets processed might be as important as how many queries you’re asking. For example, the average operational water consumption per query processed in a Washington datacenter is seven times that of a query in Ireland (Li et al. 5). This all means that understanding the impacts of AI water consumption on local communities can be very challenging. In this essay, I have primarily focused on data center water use in America, as there is greatest research available on this topic, though this of course leaves out the many other communities affected by this issue.
-AI Water Use and the Environment
-A key concern for many detractors of data centers is that AI’s water use can severely harm local communities by evaporating potable water that they might otherwise need, leading to increased water scarcity, contamination, negative health outcomes, and other impacts. The majority of data centers are built in areas with high levels of water stress, meaning that access to potable water is particularly important for these communities (Nicoletti et al). Water consumption is often concentrated to small geographical areas, further intensifying these effects. A New York Times investigation suggested that data centers in Mexico were linked to water and electrical outages, leading to outcomes like blackouts, a local hepatitis crisis from water scarcity, and increased costs for residents (Mozur et al). Similarly, later research revealed that the construction of a Meta data center in Georgia lead to groundwater contamination, which polluted local water sources and wells (Tan). In this case Meta failed to take responsibility for the pollution or ameliorate the problem, leaving community members without recourse, showing how corporate interests can be opposed to those of local communities. Once built, the financial and social power of data centers and the companies that operate them can lead to a lack of accountability for further harms they cause, especially when data centers are built in developing countries and in areas where local communities lack political power. Furthermore, these precedents impact future generations, so a solely presentist approach considering the current impacts may not always be justified. The model that data centers set for the power of companies and their duties to communities may impact how they will be regulated in the future, further increasing the importance of community involvement.
-However, environmental concerns about AI can also be weaponized to block building and development by communities in harmful ways. Since data center consumption will vary a great deal by location and type of center, it is important that community voices and perspectives are taken into account, but they can also lead to the most vocal and privileged members dominating the conversation. In the US, 68 billion dollars’ worth of data center development has been blocked or delayed by community opposition, preventing these centers using up water but also denying these areas billions of dollars in economic development (Data Center Watch Report). Interestingly, data center opposition is actually more common in Republican communities, so is not always motivated by progressive environmental concerns (Data Center Watch Report). Many journalists have linked data center opposition to the “NIMBY”, or “not in my backyard” movement, which seeks to prevent building and development in general in local communities, and is often discussed as exacerbating the housing crisis (Salzman, Hoover, Murphy and Feng). 
-A middle ground between NIMBY approaches to data centers and potential contamination, environmental and health harms to local communities may be community initiatives that promote greater transparency for how data centers will impact their neighbors. For example, the Pulitzer Center’s South to South AI Accountability CoLab aims to strengthen “the connection between artificial intelligence accountability reporting and civil society engagement”, helping fund projects to increase accountability on AI topics in the global south (South to South AI Accountability CoLab). Furthermore, projects like Chupadados visualize AI and its impacts in a critical-creative manner, naming AI “the Datasucker” and helping make these impacts intuitive for viewers (Chupadados). Congressman Daniel Issa has advocated for a “Digital Bill of Rights” (Rogers). Perhaps local communities might create a similar contract for how data centers should behave and share information on their impacts?    
-Weighing Up Water Consumption
-The dismissal of concerns about water use by figures like Altman and Masley can be seen as emblematic of a kind of individualistic techno-libertarianism that pervades Silicon Valley. Andy Masley declared that the “AI water issue is fake”, gaining huge tractions online for his critiques of concern around water consumption (Masley). Importantly, Masley is a member of the effective altruist community, a movement in Silicon Valley focused on rationalism and technological expansion sometimes critiqued for its opposition to social justice (Crary et al). Similarly, in the same blog post where he declared his estimate of one-fifteenth of a tablespoon of water per query, Altman described how the impacts of AI will lead to “hard parts like whole classes of jobs going away, but on the other hand the world will be getting so much richer so quickly” (Altman). His failure to include first, second and third-scope uses of water in his estimates of AI water consumption could be seen as linking to his broader approach to technology, which Hallam Stevens has critiqued as “magical thinking” which assumes that AI and the resources it uses are unlimited (Stevens). Ruha Benjamin has also critiqued the “libertarian ethos” of figures like Altman, who ignore the ways they code inequity into the technologies they create (Benjamin 17). Benjamin and Stevens’s approaches illuminate how Altman’s low estimates of water use function as critiques of community concerns. While not as large as other forms of water consumption, the water used by Altman’s datacenters will be inaccessible to the local communities nearby. But will the benefits of the wealth produced by AI truly be accessible to the “world”, as he asserts, or only a privileged minority? Criticisms of environmental concerns about AI might be seen as linked to broader techno-utopian, libertarian narratives that dismiss the importance of collective environmental resources and create huge wealth inequities. 
-However, AI advocates stress that data center water use should be considered in comparison with the water use of other local industries. For example, in Arizona, data centers in Phoenix consume about as much water as 89% of the population in the city (Sherlock). Yet as Tanner Sherlock emphasizes, “Plenty has been written about data centers “taking” water from the desert around Phoenix, but much of the discussion lacks the context in which Phoenix’s water crisis exists. In a word: agriculture.” (Sherlock). He emphasizes that opposition to data center development because of water consumption refuses to acknowledge the huge environmental impacts of farming in the area, which has caused a great deal of water stress in the region in the first place. Indeed, Masley suggests that data centers are often “the best new buildings possible to benefit a community experiencing water scarcity, because any other industries using the same amount of water would generate way less tax revenue” (Masley). While Masley takes a particularly strong pro-AI stance, his focus on a comparative approach is useful for thinking about water consumption impact.  Thus, AI water use can often be large, but the impact of new data centers on communities must be understood in the context of the other consumptive industries that also cause strain on water resources and provide value through tax revenue and investment.  
-Finally, framing AI as a uniquely harmful technology in regards to water use might also absolve ordinary Americans from considering their involvement in other highly consumptive industries. When polled, 40% of Americans report being “extremely” or “very” concerned about AI’s water consumption, and they care about it more than the water consumed by cryptocurrency, the meat industry, or air travel (McDermott and Sanders). These other consumptive industries are worthy of investigation and reflection as well, and an environmental approach that focuses overly on AI can neglect these larger sources of water consumption and environmental harm. 
-Visualizing AI Water Use
-While I initially planned to solely write an essay on the subject, I realized that visualizing water use might help make this topic easier to explore. I decided to create my own interactive visualization website on the topic, accessible at https://quiquae.github.io/water-use/. To create this, I used poetic engineering to prompt Stanford’s AI Playground to creatively help me launch the website on GitHub. Since all the data I was referencing was publicly available, I was not concerned about sharing this information with the model, but did so in the AI Playground to be as secure as possible. I also decided to prompt it to create a website that is user-friendly and easy to navigate. This tool allows individuals to learn more about AI water use, guess the water consumed by different AI estimates and requirements, and learn more about the issue.
-I also included my own wampum codes framework, following Amelia Winger-Bearskin’s scholarship (Winger-Bearskin). I included my values such as “Show the data and highlight when estimates for water use differ so people can make their own, informed decisions", "A comparative approach: contrasting AI water use with other high-impact sources", "Cite all sources— every estimate is transparent and traceable", and "Free and open — no barriers to access.” This wampum code file helps ensure that those who use my publicly accessible data and code know my ethical intentions and will hopefully respect them. 
-There is, of course, an irony in using AI to create an informative tool about AI itself. However, I hope that this essay and tool will help spark conversations about water consumption and provide greater clarity for individuals looking to learn more about the issue.
-Works Cited
-Altman, Sam. "The Gentle Singularity." Sam Altman, 10 June 2025, blog.samaltman.com/the-gentle-singularity 
-Benjamin, Ruha. Race after Technology: Abolitionist Tools for the New Jim Code. Polity Press, 2019.
-Crary, Alice, Lori Gruen and Carol J Adams. "The Predictably Grievous Harms of Effective Altruism." OUPblog, Oxford University Press blog, 12 Dec. 2022, blog.oup.com/2022/12/the-predictably-grievous-harms-of-effective-altruism/.
-“Chupadados the Datasucker: the hidden faces of our beloved technologies”, Chupadados, Coding Rights, https://chupadados.codingrights.org/en/homepage/ 
-"Data Center Watch Report." Data Center Watch, www.datacenterwatch.org/report. Accessed 16 March 2025.
-“South to South AI Accountability CoLab”, Pulitzer Center, https://pulitzercenter.org/journalism/initiatives/south-to-south 
-Gutierrez-Chavez, Maria Jose. "How Much Water Does AI Actually Use? Depends Who You Ask." Inc., 11 December 2025, www.inc.com/maria-jose-gutierrez-chavez/how-much-water-does-ai-actually-use-depends-who-you-ask/91276930 .
-Hoover, Amanda. “America's hottest NIMBY issue: Data centers”, Business Insider, 22 February 2026. https://www.businessinsider.com/americas-hottest-nimby-issue-data-centers-sanders-desantis-2026-2 
-Li, Pengfei, Jianyi Yang, Mohammed A. Islam, and Shaolei Ren. “Making AI Less “Thirsty”: Uncovering and Addressing the Secret Water Footprint of AI Models”, Arxiv, 26 March 2025. https://arxiv.org/pdf/2304.03271. 
-Masley, Andy. "The AI Water Issue Is Fake." Andy Masley, Substack, 11 October 2025. blog.andymasley.com/p/the-ai-water-issue-is-fake.
-McDermott, Jennifer, and Linley Sanders. “What Americans Think About the Environmental Impact of AI, According to a New Poll.” The Institute for Climate and Sustainable Growth, University of Chicago, 23 Oct. 2025, https://climate.uchicago.edu/news/what-americans-think-about-the-environmental-impact-of-ai-according-to-a-new-poll/. 
-Mozur, Paul, Adam Satariano and Emiliano Rodríguez Mega. From Mexico to Ireland, Fury Mounts Over a Global A.I. Frenzy, The New York Times, 20 October 2025, https://www.nytimes.com/2025/10/20/technology/ai-data-center-backlash-mexico-ireland.html?rsrc=flt&unlocked_article_code=1.vE8.CBEA.66ywquTG2F-s&smid=url-share 
-Murphy, Ryan and Emily Feng. “Why more residents are saying 'No' to AI data centers in their backyard”, NPR, 17 July 2025, https://www.npr.org/2025/07/17/nx-s1-5469933/virginia-data-centers-residents-saying-no 
-Nicoletti, Leonardo, Michelle Ma and Dina Bass.e "AI's Thirst for Water Threatens Progress on Drought and Climate Goals." Bloomberg, 16 Jan. 2025, www.bloomberg.com/graphics/2025-ai-impacts-data-centers-water-data/.
-Rogers, Katie. “Congressman drafts 'Digital Bill of Rights' – what would you add?”, 13 June 2012, https://www.theguardian.com/technology/us-news-blog/2012/jun/13/digital-bill-of-rights-sopa 
-Salzman, Avi. " A Growing Nimby Movement Could Upend the Data Center Boom." Barron's, 18 Oct. 2025, www.barrons.com/articles/data-center-nimby-protest-ai-4d828158.
-Sherlock, Tanner. “Don't Fear the Data Center”, Red Canary Magazine, 27 January 2025. https://redcanarycollective.org/magazine/phoenix-data-center-water-usage/ 
-Stevens, Hallem. "In a New Manifesto, OpenAI's Sam Altman Envisions an AI Utopia—and Reveals Glaring Blind Spots." The Conversation, 26 September 2024, theconversation.com/in-a-new-manifesto-openais-sam-altman-envisions-an-ai-utopia-and-reveals-glaring-blind-spots-239841 
-Stokel-Walker, Chris. "Data Centers Have a Cooling Problem. These Companies Are Solving It." Inc., 27 January 2025, www.inc.com/chris-stokel-walker/data-centers-have-a-cooling-problem-these-companies-are-solving-it/91139815.
-Taft, Molly. “You’re Thinking About AI and Water All Wrong.” WIRED, 12 December 2025, https://www.wired.com/story/karen-hao-empire-of-ai-water-use-statistics/
-Tan, Eli. “Their Water Taps Ran Dry When Meta Built Next Door”, The New York Times, 14 July 2025, https://www.nytimes.com/2025/07/14/technology/meta-data-center-water.html 
-Winger-Bearskin, Amelia. "Indigenous Wisdom as a Model for Software Design and Development." Mozilla Foundation, 2 October 2020, foundation.mozilla.org/en/blog/indigenous-wisdom-model-software-design-and-development/  </p>
-                <div class="placeholder">
-                    More detailed information will be added here later.
-                </div>
+
+                <h3>AI and Water Use: Investigating the Estimates</h3>
+
+                <p>It often seems like everyone's talking about AI water use. Huge proportions of Americans report being deeply concerned about AI's impact on water consumption (McDermott and Sanders) and oppose data centers being built near them (Data Center Watch Report). Yet how much water data centers actually use, and how important this consumption is, can be extremely difficult to pin down. Sam Altman says a single Chat-GPT query uses "one-fifteenth of a teaspoon" of water (Altman). According to UC Riverside and UT Arlington researchers, taking into account other types of water used in cooling the data center, generating its electricity, and creating the chips and materials produces an estimate closer to 3.5 teaspoons per query, about fifty times the number suggested by Altman (Li et al.). The huge differences between estimates like these reveal the difficulties of estimating AI's true impact on water resources, and the way that the AI water consumption debate has become a battleground for broader questions about the role of technology in society. This essay will argue that data center water consumption can be a significant problem in areas experiencing high water stress, but must be understood in context of the community that a data center is situated in and the impacts of other consumptive industries on the environment.</p>
+
+                <h3>Estimating Water Use: Indirect and Direct Water Consumption</h3>
+
+                <p>AI water use is difficult to pin down because there are many indirect and direct forms of water consumption, whose inclusion or exclusion dramatically alters estimates. Water is used in three key scopes across the AI model training and query process. Firstly, water is used in datacenter cooling, both on a server-level and facility level, usually through cooling towers, or air cooling systems (Li et al. 3). Cooling towers contaminate water, though water can be recycled for 3-10 cycles, while outside air water involves evaporating water and is usually more water-efficient but at highest demand during hot times when water supplies are most stressed (Li et al. 3). However, new forms of cooling are also being developed, including dry and air cooling which requires little direct water consumption but great deals of electricity, feeding into second-scope estimates (Gutierrez-Chavez). Second-scope water usage involves the water used to create electricity used to power the data center, which varies depending on how the electricity was generated and how much the center uses (Li et al. 4). Third-scope water use involves the water used in creating the chips and servers themselves, which can sometimes be recycled (Li et al. 4). These uses of water occur both when the model is trained, but also in the operations of each individual query.</p>
+
+                <p>The many scopes of water consumption in relation to AI explains the vast variance in water use estimates. For example, Sam Altman's 0.000085 gallons per query estimate takes into account only the water used for the individual query (Altman). A Google study taking into account only first-scope use in cooling a data center suggests that a single Gemini query uses "0.26 milliliters (or about five drops) of water" (Vahdat and Dean). The UT Riverside study, taking into account all scopes of water use, suggests an ultimate result of about 29.3 GPT-3 queries per 500 ml, or 220 queries per gallon of water (Li et al. 5). None of these estimates are wrong, precisely, but they are all conveying vastly different information. When comparing AI water use to other forms of consumption, it is thus crucial to ensure that the things being compared have calculated their impact in the same way.</p>
+
+                <h3>Understanding Water Consumption</h3>
+
+                <p>Creating greater transparency about AI water consumption is crucial because water use estimates have become a politicized battleground for debates about the technology itself. AI water use is reported as a top concern for ordinary Americans using the technology, and has been used to block data center building by many local communities (McDermott and Sanders).</p>
+
+                <p>However, it is worth interrogating how language around water "consumption" can flatten the reality of how water is actually used. Water used throughout the process of querying AI models is usually made unavailable to the local watershed through evaporation or contamination, but is not used up in the ways people might expect. For example, water used to cool datacenters is evaporated, but not destroyed—that water is "consumed" and lost to local water systems, but ultimately returns to the hydrological cycle (Li et al. 3). Water contamination does prevent water being used without cleaning as potable water, but there are fewer clear metrics on what percentage of AI's water consumption involves contamination. Thus, water use by data centers should be understood primarily as representing the water resources now inaccessible to the local community, not necessarily as water removed or destroyed from the environment as a whole.</p>
+
+                <p>Similarly, water consumption also varies drastically by region and type of data center, meaning that where your Chat-GPT query gets processed might be as important as how many queries you're asking. For example, the average operational water consumption per query processed in a Washington datacenter is seven times that of a query in Ireland (Li et al. 5). This all means that understanding the impacts of AI water consumption on local communities can be very challenging. In this essay, I have primarily focused on data center water use in America, as there is greatest research available on this topic, though this of course leaves out the many other communities affected by this issue.</p>
+
+                <h3>AI Water Use and the Environment</h3>
+
+                <p>A key concern for many detractors of data centers is that AI's water use can severely harm local communities by evaporating potable water that they might otherwise need, leading to increased water scarcity, contamination, negative health outcomes, and other impacts. The majority of data centers are built in areas with high levels of water stress, meaning that access to potable water is particularly important for these communities (Nicoletti et al). Water consumption is often concentrated to small geographical areas, further intensifying these effects. A New York Times investigation suggested that data centers in Mexico were linked to water and electrical outages, leading to outcomes like blackouts, a local hepatitis crisis from water scarcity, and increased costs for residents (Mozur et al). Similarly, later research revealed that the construction of a Meta data center in Georgia lead to groundwater contamination, which polluted local water sources and wells (Tan). In this case Meta failed to take responsibility for the pollution or ameliorate the problem, leaving community members without recourse, showing how corporate interests can be opposed to those of local communities. Once built, the financial and social power of data centers and the companies that operate them can lead to a lack of accountability for further harms they cause, especially when data centers are built in developing countries and in areas where local communities lack political power. Furthermore, these precedents impact future generations, so a solely presentist approach considering the current impacts may not always be justified. The model that data centers set for the power of companies and their duties to communities may impact how they will be regulated in the future, further increasing the importance of community involvement.</p>
+
+                <p>However, environmental concerns about AI can also be weaponized to block building and development by communities in harmful ways. Since data center consumption will vary a great deal by location and type of center, it is important that community voices and perspectives are taken into account, but they can also lead to the most vocal and privileged members dominating the conversation. In the US, 68 billion dollars' worth of data center development has been blocked or delayed by community opposition, preventing these centers using up water but also denying these areas billions of dollars in economic development (Data Center Watch Report). Interestingly, data center opposition is actually more common in Republican communities, so is not always motivated by progressive environmental concerns (Data Center Watch Report). Many journalists have linked data center opposition to the "NIMBY", or "not in my backyard" movement, which seeks to prevent building and development in general in local communities, and is often discussed as exacerbating the housing crisis (Salzman, Hoover, Murphy and Feng).</p>
+
+                <p>A middle ground between NIMBY approaches to data centers and potential contamination, environmental and health harms to local communities may be community initiatives that promote greater transparency for how data centers will impact their neighbors. For example, the Pulitzer Center's South to South AI Accountability CoLab aims to strengthen "the connection between artificial intelligence accountability reporting and civil society engagement", helping fund projects to increase accountability on AI topics in the global south (South to South AI Accountability CoLab). Furthermore, projects like Chupadados visualize AI and its impacts in a critical-creative manner, naming AI "the Datasucker" and helping make these impacts intuitive for viewers (Chupadados). Congressman Daniel Issa has advocated for a "Digital Bill of Rights" (Rogers). Perhaps local communities might create a similar contract for how data centers should behave and share information on their impacts?</p>
+
+                <h3>Weighing Up Water Consumption</h3>
+
+                <p>The dismissal of concerns about water use by figures like Altman and Masley can be seen as emblematic of a kind of individualistic techno-libertarianism that pervades Silicon Valley. Andy Masley declared that the "AI water issue is fake", gaining huge tractions online for his critiques of concern around water consumption (Masley). Importantly, Masley is a member of the effective altruist community, a movement in Silicon Valley focused on rationalism and technological expansion sometimes critiqued for its opposition to social justice (Crary et al). Similarly, in the same blog post where he declared his estimate of one-fifteenth of a tablespoon of water per query, Altman described how the impacts of AI will lead to "hard parts like whole classes of jobs going away, but on the other hand the world will be getting so much richer so quickly" (Altman). His failure to include first, second and third-scope uses of water in his estimates of AI water consumption could be seen as linking to his broader approach to technology, which Hallam Stevens has critiqued as "magical thinking" which assumes that AI and the resources it uses are unlimited (Stevens). Ruha Benjamin has also critiqued the "libertarian ethos" of figures like Altman, who ignore the ways they code inequity into the technologies they create (Benjamin 17). Benjamin and Stevens's approaches illuminate how Altman's low estimates of water use function as critiques of community concerns. While not as large as other forms of water consumption, the water used by Altman's datacenters will be inaccessible to the local communities nearby. But will the benefits of the wealth produced by AI truly be accessible to the "world", as he asserts, or only a privileged minority? Criticisms of environmental concerns about AI might be seen as linked to broader techno-utopian, libertarian narratives that dismiss the importance of collective environmental resources and create huge wealth inequities.</p>
+
+                <p>However, AI advocates stress that data center water use should be considered in comparison with the water use of other local industries. For example, in Arizona, data centers in Phoenix consume about as much water as 89% of the population in the city (Sherlock). Yet as Tanner Sherlock emphasizes, "Plenty has been written about data centers "taking" water from the desert around Phoenix, but much of the discussion lacks the context in which Phoenix's water crisis exists. In a word: agriculture." (Sherlock). He emphasizes that opposition to data center development because of water consumption refuses to acknowledge the huge environmental impacts of farming in the area, which has caused a great deal of water stress in the region in the first place. Indeed, Masley suggests that data centers are often "the best new buildings possible to benefit a community experiencing water scarcity, because any other industries using the same amount of water would generate way less tax revenue" (Masley). While Masley takes a particularly strong pro-AI stance, his focus on a comparative approach is useful for thinking about water consumption impact. Thus, AI water use can often be large, but the impact of new data centers on communities must be understood in the context of the other consumptive industries that also cause strain on water resources and provide value through tax revenue and investment.</p>
+
+                <p>Finally, framing AI as a uniquely harmful technology in regards to water use might also absolve ordinary Americans from considering their involvement in other highly consumptive industries. When polled, 40% of Americans report being "extremely" or "very" concerned about AI's water consumption, and they care about it more than the water consumed by cryptocurrency, the meat industry, or air travel (McDermott and Sanders). These other consumptive industries are worthy of investigation and reflection as well, and an environmental approach that focuses overly on AI can neglect these larger sources of water consumption and environmental harm.</p>
+
+                <h3>Visualizing AI Water Use</h3>
+
+                <p>While I initially planned to solely write an essay on the subject, I realized that visualizing water use might help make this topic easier to explore. I decided to create my own interactive visualization website on the topic, accessible at <a href="https://quiquae.github.io/water-use/" target="_blank">https://quiquae.github.io/water-use/</a>. To create this, I used poetic engineering to prompt Stanford's AI Playground to creatively help me launch the website on GitHub. Since all the data I was referencing was publicly available, I was not concerned about sharing this information with the model, but did so in the AI Playground to be as secure as possible. I also decided to prompt it to create a website that is user-friendly and easy to navigate. This tool allows individuals to learn more about AI water use, guess the water consumed by different AI estimates and requirements, and learn more about the issue.</p>
+
+                <p>I also included my own wampum codes framework, following Amelia Winger-Bearskin's scholarship (Winger-Bearskin). I included my values such as "Show the data and highlight when estimates for water use differ so people can make their own, informed decisions", "A comparative approach: contrasting AI water use with other high-impact sources", "Cite all sources— every estimate is transparent and traceable", and "Free and open — no barriers to access." This wampum code file helps ensure that those who use my publicly accessible data and code know my ethical intentions and will hopefully respect them.</p>
+
+                <p>There is, of course, an irony in using AI to create an informative tool about AI itself. However, I hope that this essay and tool will help spark conversations about water consumption and provide greater clarity for individuals looking to learn more about the issue.</p>
+
+                <h3>Works Cited</h3>
+
+                <p class="citation">Altman, Sam. "The Gentle Singularity." <em>Sam Altman</em>, 10 June 2025, blog.samaltman.com/the-gentle-singularity</p>
+
+                <p class="citation">Benjamin, Ruha. <em>Race after Technology: Abolitionist Tools for the New Jim Code</em>. Polity Press, 2019.</p>
+
+                <p class="citation">Crary, Alice, Lori Gruen and Carol J Adams. "The Predictably Grievous Harms of Effective Altruism." <em>OUPblog</em>, Oxford University Press blog, 12 Dec. 2022, blog.oup.com/2022/12/the-predictably-grievous-harms-of-effective-altruism/.</p>
+
+                <p class="citation">"Chupadados the Datasucker: the hidden faces of our beloved technologies", <em>Chupadados</em>, Coding Rights, <a href="https://chupadados.codingrights.org/en/homepage/" target="_blank">https://chupadados.codingrights.org/en/homepage/</a></p>
+
+                <p class="citation">"Data Center Watch Report." <em>Data Center Watch</em>, www.datacenterwatch.org/report. Accessed 16 March 2025.</p>
+
+                <p class="citation">"South to South AI Accountability CoLab", <em>Pulitzer Center</em>, <a href="https://pulitzercenter.org/journalism/initiatives/south-to-south" target="_blank">https://pulitzercenter.org/journalism/initiatives/south-to-south</a></p>
+
+                <p class="citation">Gutierrez-Chavez, Maria Jose. "How Much Water Does AI Actually Use? Depends Who You Ask." <em>Inc.</em>, 11 December 2025, www.inc.com/maria-jose-gutierrez-chavez/how-much-water-does-ai-actually-use-depends-who-you-ask/91276930.</p>
+
+                <p class="citation">Hoover, Amanda. "America's hottest NIMBY issue: Data centers", <em>Business Insider</em>, 22 February 2026. <a href="https://www.businessinsider.com/americas-hottest-nimby-issue-data-centers-sanders-desantis-2026-2" target="_blank">https://www.businessinsider.com/americas-hottest-nimby-issue-data-centers-sanders-desantis-2026-2</a></p>
+
+                <p class="citation">Li, Pengfei, Jianyi Yang, Mohammed A. Islam, and Shaolei Ren. "Making AI Less "Thirsty": Uncovering and Addressing the Secret Water Footprint of AI Models", <em>Arxiv</em>, 26 March 2025. <a href="https://arxiv.org/pdf/2304.03271" target="_blank">https://arxiv.org/pdf/2304.03271</a>.</p>
+
+                <p class="citation">Masley, Andy. "The AI Water Issue Is Fake." <em>Andy Masley</em>, Substack, 11 October 2025. blog.andymasley.com/p/the-ai-water-issue-is-fake.</p>
+
+                <p class="citation">McDermott, Jennifer, and Linley Sanders. "What Americans Think About the Environmental Impact of AI, According to a New Poll." <em>The Institute for Climate and Sustainable Growth</em>, University of Chicago, 23 Oct. 2025, <a href="https://climate.uchicago.edu/news/what-americans-think-about-the-environmental-impact-of-ai-according-to-a-new-poll/" target="_blank">https://climate.uchicago.edu/news/what-americans-think-about-the-environmental-impact-of-ai-according-to-a-new-poll/</a>.</p>
+
+                <p class="citation">Mozur, Paul, Adam Satariano and Emiliano Rodríguez Mega. "From Mexico to Ireland, Fury Mounts Over a Global A.I. Frenzy", <em>The New York Times</em>, 20 October 2025, <a href="https://www.nytimes.com/2025/10/20/technology/ai-data-center-backlash-mexico-ireland.html" target="_blank">https://www.nytimes.com/2025/10/20/technology/ai-data-center-backlash-mexico-ireland.html</a></p>
+
+                <p class="citation">Murphy, Ryan and Emily Feng. "Why more residents are saying 'No' to AI data centers in their backyard", <em>NPR</em>, 17 July 2025, <a href="https://www.npr.org/2025/07/17/nx-s1-5469933/virginia-data-centers-residents-saying-no" target="_blank">https://www.npr.org/2025/07/17/nx-s1-5469933/virginia-data-centers-residents-saying-no</a></p>
+
+                <p class="citation">Nicoletti, Leonardo, Michelle Ma and Dina Bass. "AI's Thirst for Water Threatens Progress on Drought and Climate Goals." <em>Bloomberg</em>, 16 Jan. 2025, www.bloomberg.com/graphics/2025-ai-impacts-data-centers-water-data/.</p>
+
+                <p class="citation">Rogers, Katie. "Congressman drafts 'Digital Bill of Rights' – what would you add?", <em>The Guardian</em>, 13 June 2012, <a href="https://www.theguardian.com/technology/us-news-blog/2012/jun/13/digital-bill-of-rights-sopa" target="_blank">https://www.theguardian.com/technology/us-news-blog/2012/jun/13/digital-bill-of-rights-sopa</a></p>
+
+                <p class="citation">Salzman, Avi. "A Growing Nimby Movement Could Upend the Data Center Boom." <em>Barron's</em>, 18 Oct. 2025, www.barrons.com/articles/data-center-nimby-protest-ai-4d828158.</p>
+
+                <p class="citation">Sherlock, Tanner. "Don't Fear the Data Center", <em>Red Canary Magazine</em>, 27 January 2025. <a href="https://redcanarycollective.org/magazine/phoenix-data-center-water-usage/" target="_blank">https://redcanarycollective.org/magazine/phoenix-data-center-water-usage/</a></p>
+
+                <p class="citation">Stevens, Hallam. "In a New Manifesto, OpenAI's Sam Altman Envisions an AI Utopia—and Reveals Glaring Blind Spots." <em>The Conversation</em>, 26 September 2024, theconversation.com/in-a-new-manifesto-openais-sam-altman-envisions-an-ai-utopia-and-reveals-glaring-blind-spots-239841</p>
+
+                <p class="citation">Stokel-Walker, Chris. "Data Centers Have a Cooling Problem. These Companies Are Solving It." <em>Inc.</em>, 27 January 2025, www.inc.com/chris-stokel-walker/data-centers-have-a-cooling-problem-these-companies-are-solving-it/91139815.</p>
+
+                <p class="citation">Taft, Molly. "You're Thinking About AI and Water All Wrong." <em>WIRED</em>, 12 December 2025, <a href="https://www.wired.com/story/karen-hao-empire-of-ai-water-use-statistics/" target="_blank">https://www.wired.com/story/karen-hao-empire-of-ai-water-use-statistics/</a></p>
+
+                <p class="citation">Tan, Eli. "Their Water Taps Ran Dry When Meta Built Next Door", <em>The New York Times</em>, 14 July 2025, <a href="https://www.nytimes.com/2025/07/14/technology/meta-data-center-water.html" target="_blank">https://www.nytimes.com/2025/07/14/technology/meta-data-center-water.html</a></p>
+
+                <p class="citation">Winger-Bearskin, Amelia. "Indigenous Wisdom as a Model for Software Design and Development." <em>Mozilla Foundation</em>, 2 October 2020, foundation.mozilla.org/en/blog/indigenous-wisdom-model-software-design-and-development/</p>
+                                                
             </div>
         </div>
         
@@ -1193,68 +1233,61 @@ Winger-Bearskin, Amelia. "Indigenous Wisdom as a Model for Software Design and D
                 console.error('Error loading data:', error);
                 // Fallback to hardcoded data if JSON fails
                 items = [
-                    { 
-                        name: "A car", 
-                        water: 17831, 
-                        plural: "cars",
-                        source: "Water Footprint Calculator (Bergen et Al)",
-                        link: "https://watercalculator.org/footprint/the-hidden-water-in-everyday-products/" 
-                    },
-                    { 
-                        name: "A piece of paper", 
-                        water: 1.3, 
-                        plural: "pieces of paper",
-                        source: "Water Footprint Calculator (Bergen et Al)",
-                        link: "https://watercalculator.org/footprint/the-hidden-water-in-everyday-products/" 
-                    },
-                    { 
-                        name: "An average American shower", 
-                        water: 15.8, 
-                        plural: "average American showers",
-                        source: "2016 Residential End Uses of Water",
-                        link: "https://www.waterrf.org/research/projects/residential-end-uses-water-version-2"
-                    },
-                    { 
-                        name: "A cotton t-shirt", 
-                        water: 659, 
-                        plural: "cotton t-shirts",
-                        source: "Water Footprint Calculator (Bergen et Al)",
-                        link: "https://watercalculator.org/footprint/the-hidden-water-in-everyday-products/"
-                    },
-                    { 
-                        name: "A teaspoon of water", 
-                        water: 0.00034, 
-                        plural: "teaspoons of water",
-                        source: "US Liquid Measurements",
-                        link: "https://www.nist.gov/pml/owm/metric-si/volume"
-                    }
-                ];
-                
-                chatGPTEstimates = [
-                    { 
-                        source: "UC Riverside Study", 
-                        water: 4.50805815e-3,
-                        info: "Estimated U.S. Average: 29.3 GPT-3 queries per 500 ml (Ren et al. 2023)",
-                        link: "https://arxiv.org/abs/2304.03271"
-                    },
-                    { 
-                        source: "Making AI", 
-                        water: 6.868473e-5,
-                        info: "Google Cloud Report on Environmental Impacts of AI",
-                        link: "https://cloud.google.com/blog/products/infrastructure/measuring-the-environmental-impact-of-ai-inference"
-                    },
-                    { 
-                        source: "Sam Altman", 
-                        water: 8.5e-5, 
-                        info: "CEO estimate from blog post (June 2025 archive)",
-                        link: "https://web.archive.org/web/20250610000000*/https://samaltman.com/ai-and-water"
-                    },
-                    { 
-                        source: "Conservative Estimate", 
-                        water: 1,
-                        info: "Upper-bound estimate accounting for indirect usage (UC Riverside 2023)",
-                        link: "https://arxiv.org/abs/2304.03271"
-                    }
+                {
+                "name": "A car",
+                "water": 17831,
+                "plural": "cars",
+                "source": "Water Footprint Calculator. Note: includes water used in production.",
+                "link": "https://watercalculator.org/footprint/the-hidden-water-in-everyday-products/"
+                },
+                {
+                "name": "A piece of paper",
+                "water": 1.3,
+                "plural": "pieces of paper",
+                "source": "Water Footprint Calculator. Note: includes water used in production.",
+                "link": "https://watercalculator.org/footprint/the-hidden-water-in-everyday-products/"
+                },
+                {
+                "name": "An average American shower",
+                "water": 15.8,
+                "plural": "average American showers",
+                "source": "2016 Residential End Uses of Water. Note: includes only water used in shower itself, not to create/power the shower.",
+                "link": "https://www.waterrf.org/research/projects/residential-end-uses-water-version-2"
+                },
+                {
+                "name": "A cotton t-shirt",
+                "water": 659,
+                "plural": "cotton t-shirts",
+                "source": "Water Footprint Calculator. Note: includes water used in production.",
+                "link": "https://watercalculator.org/footprint/the-hidden-water-in-everyday-products/"
+                },
+                {
+                "name": "A teaspoon of water",
+                "water": 0.00034,
+                "plural": "teaspoons of water",
+                "source": "US Liquid Measurements",
+                "link": "https://www.nist.gov/pml/owm/metric-si/volume"
+                }
+            ];
+            chatGPTEstimates = [
+                {
+                "source": "UC Riverside Study",
+                "water": 0.00450805815,
+                "info": "Estimated U.S. Average: 29.3 GPT-3 queries per 500 ml (Ren et al. 2023). Note: this takes into account first, second and third-scope water use, including water used in cooling, constructing and making the data center and its components.",
+                "link": "https://arxiv.org/abs/2304.03271"
+                },
+                {
+                "source": "Google Cloud Report",
+                "water": 6.868473e-5,
+                "info": "Google Cloud Report on Environmental Impacts of AI. Note: this is an estimate for the water used per inference, only taking into account first-scope use for cooling a data center ",
+                "link": "https://cloud.google.com/blog/products/infrastructure/measuring-the-environmental-impact-of-ai-inference/ "
+                },
+                {
+                "source": "Sam Altman",
+                "water": 0.000085,
+                "info": "CEO estimate from blog post (June 2025 archive). Note: this is only the water used for the query itself, not the training or other operations.",
+                "link": "https://web.archive.org/web/20250610000000*/https://samaltman.com/ai-and-water"
+                }
                 ];
                 initializeApp();
             }
