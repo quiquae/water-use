@@ -4,36 +4,92 @@
       "name": "A car",
       "water": 17831,
       "plural": "cars",
-      "source": "Water Footprint Calculator. Note: includes water used in production.",
+      "source": "Water Footprint Calculator. Note: Lifecycle assessment includes water used in production but not scope 2/3.",
       "link": "https://watercalculator.org/footprint/the-hidden-water-in-everyday-products/"
     },
     {
       "name": "A piece of paper",
       "water": 1.3,
       "plural": "pieces of paper",
-      "source": "Water Footprint Calculator. Note: includes water used in production.",
+      "source": "Water Footprint Calculator. Note: Lifecycle assessment includes water used in production but not scope 2/3.",
       "link": "https://watercalculator.org/footprint/the-hidden-water-in-everyday-products/"
     },
     {
       "name": "An average American shower",
       "water": 15.8,
       "plural": "average American showers",
-      "source": "2016 Residential End Uses of Water. Note: includes only water used in shower itself, not to create/power the shower.",
+      "source": "2016 Residential End Uses of Water. Note: includes only water used in shower itself, not to create/power the shower (scope 2/3).",
       "link": "https://www.waterrf.org/research/projects/residential-end-uses-water-version-2"
     },
     {
       "name": "A cotton t-shirt",
       "water": 659,
       "plural": "cotton t-shirts",
-      "source": "Water Footprint Calculator. Note: includes water used in production.",
+      "source": "Water Footprint Calculator. Note: Lifecycle assessment includes water used in production but not scope 2/3.",
       "link": "https://watercalculator.org/footprint/the-hidden-water-in-everyday-products/"
     },
     {
       "name": "A teaspoon of water",
       "water": 0.00034,
       "plural": "teaspoons of water",
-      "source": "US Liquid Measurements",
+      "source": "US Liquid Measurements. Note: This is the actual water content of a teaspoon.",
       "link": "https://www.nist.gov/pml/owm/metric-si/volume"
+    },
+    {
+      "name": "A cup of coffee",
+      "water": 37,
+      "plural": "cups of coffee",
+      "source": "Water Footprint Network (140L per 125ml cup). Note: WFN uses a blue + green + grey water methodology, not a 1/2/3 scope assessment but attempts to assess water consumption along the entire supply chain. Includes coffee bean cultivation and processing.",
+      "link": "https://waterfootprint.org/en/resources/interactive-tools/product-gallery/"
+    },
+    {
+      "name": "An egg",
+      "water": 52,
+      "plural": "eggs",
+      "source": "Water Footprint Network (196L per egg). Note: WFN uses a blue + green + grey water methodology, not a 1/2/3 scope assessment but attempts to assess water consumption along the entire supply chain. Includes chicken feed and processing.",
+      "link": "https://waterfootprint.org/en/resources/interactive-tools/product-gallery/"
+    },
+    {
+      "name": "A pair of jeans",
+      "water": 2109,
+      "plural": "pairs of jeans",
+      "source": "Water Footprint Network (7,982L for 1kg denim). Note: WFN uses a blue + green + grey water methodology, not a 1/2/3 scope assessment but attempts to assess water consumption along the entire supply chain.Includes cotton growing, dyeing, and manufacturing.",
+      "link": "https://waterfootprint.org/en/resources/interactive-tools/product-gallery/"
+    },
+    {
+      "name": "A chocolate bar (100g)",
+      "water": 449,
+      "plural": "chocolate bars",
+      "source": "Water Footprint Network (1,700L per 100g). Note: WFN uses a blue + green + grey water methodology, not a 1/2/3 scope assessment but attempts to assess water consumption along the entire supply chain. Includes cocoa cultivation and processing.",
+      "link": "https://waterfootprint.org/en/resources/interactive-tools/product-gallery/"
+    },
+    {
+      "name": "A hamburger (quarter pound beef)",
+      "water": 1018,
+      "plural": "hamburgers",
+      "source": "Water Footprint Network (15,415L per kg beef, ~113g patty). Note: WFN uses a blue + green + grey water methodology, not a 1/2/3 scope assessment but attempts to assess water consumption along the entire supply chain.Includes feed crop irrigation and processing.",
+      "link": "https://waterfootprint.org/en/resources/interactive-tools/product-gallery/"
+    },
+    {
+      "name": "A glass of wine (125ml)",
+      "water": 28.79,
+      "plural": "glasses of wine",
+      "source": "Water Footprint Network (109L per 125ml glass). Note: WFN uses a blue + green + grey water methodology, not a 1/2/3 scope assessment but attempts to assess water consumption along the entire supply chain.Includes grape cultivation and wine production.",
+      "link": "https://waterfootprint.org/en/resources/interactive-tools/product-gallery/"
+    },
+    {
+      "name": "A slice of bread",
+      "water": 11,
+      "plural": "slices of bread",
+      "source": "Water Footprint Network (40L per 30g slice). Note: WFN uses a blue + green + grey water methodology, not a 1/2/3 scope assessment but attempts to assess water consumption along the entire supply chain.Includes wheat cultivation and baking.",
+      "link": "https://waterfootprint.org/en/resources/interactive-tools/product-gallery/"
+    },
+    {
+      "name": "An apple",
+      "water": 18,
+      "plural": "apples",
+      "source": "Water Footprint Network (70L per 150g apple). Note: WFN uses a blue + green + grey water methodology, not a 1/2/3 scope assessment but attempts to assess water consumption along the entire supply chain.Includes orchard irrigation.",
+      "link": "https://waterfootprint.org/en/resources/interactive-tools/product-gallery/"
     }
   ],
   "chatGPTEstimates": [
